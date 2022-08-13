@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <main id="top">
+        <section class="banner">
+            <div class="hi">hi</div>
+            <div class="hi"><div class="background-text">I am<br>Eren.</div></div>
+            <div class="me-banner">A freelancer developer<br>and a<br>student.</div>
+            <div class="container-mouse">
+                <span class="mouse-btn">
+                    <span class="mouse-scroll"></span>
+                </span>
+            </div>
+        </section>
+    </main>
+
+    <header id="myHeader" class="header">
+        <nav>
+            <ul>
+                <li><a href="#about-section">About</a></li>
+                <li><a href="#works-section">Works</a></li>
+                <li><a href="#contact-section">Contact</a></li>
+            </ul>    
+        </nav>
+    </header>
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+    </script>
+    
+    <main class="main-content">
+        <section class="about-me" id="about-section">
+            <h1 class="hi margin-set fs-set"><div class="background-text">About</div>Me</h1>
+            <article class="me">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, laboriosam.</p>
+            </article>
+            <img src="me.jpg" alt="Me" class="my-img">
+            <article class="me">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, laboriosam.</p>
+            </article>
+            <article class="me">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, laboriosam.</p>
+            </article>
+            <article class="me">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, laboriosam.</p>
+            </article>
+            <article class="me">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, laboriosam.</p>
+            </article>
+        </section>
+        <section class="works" id="works-section">
+            <h1 class="hi margin-set fs-set">My<div class="background-text">Works</div></h1>
+            <article class="me">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, laboriosam.</p>
+            </article>
+            <iframe src="../St-Beauty-Center-Website/index.html" frameborder="0"></iframe>
+            <article class="me">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, laboriosam.</p>
+            </article>
+        </section>
+        <section class="contact" id="contact-section">
+            <h1 class="hi margin-set fs-set"><div class="background-text">Contact</div>Me</h1>
+        </section>
+    </main>
+
+</body>
+</html>

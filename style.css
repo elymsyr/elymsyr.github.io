@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100&display=swap');
+
+
+* {
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    font-family: 'Catamaran', sans-serif;
+}
+
+/* --------------------MAIN I---------------------- */
+
+main {
+    padding: 20px 50px 0;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+}
+
+.background-text {
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.hi {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 100px;
+    color: #fff; 
+}
+
+.me-banner {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 50px;
+    color: #fff; 
+}
+
+/* --------------------SCROLL ANIMATION---------------------- */
+.container-mouse {
+    display: block;
+    justify-content: center;
+    padding-top: 20px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.mouse-btn {
+    margin: 10px auto;
+    width: 40px;
+    height: 80px;
+    border: 3px solid rgba(122, 122, 124, 0.918);
+    border-radius: 20px;
+    display: flex;
+  }
+  
+  .mouse-scroll {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(170deg, rgba(122, 122, 124, 0.918), rgb(123, 124, 124));
+    border-radius: 50%;
+    margin: auto;
+    animation: scrolling13 1s linear infinite;
+  }
+  
+  @keyframes scrolling13 {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(20px);
+    }
+  }
+
+/* --------------------HEADER---------------------- */
+
+.header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.575);
+    backdrop-filter: blur(20px);
+}
+
+.sticky {
+    position: sticky;
+    top: -1px;
+    width: 100%;
+}
+
+.margin-set {
+    margin: 0 0 20px 0;
+}
+
+header nav {
+    display: inline-block;
+    margin: 16px 10px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    overflow: hidden;
+    position: relative;
+    text-transform: uppercase;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 0 15px;
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    background-size: 1200% 100%;
+    background-position: 100%;
+    transition: background-position 1.6s ease;
+}
+
+header nav ul li a:hover {
+    background-position: 0 100%;
+}
+
+  /* --------------------MAIN II (CONTENT)---------------------- */
+.main-content {
+    padding: 0 40px;
+}
+
+.about-me, .works, .contact {
+    padding-top: 25px;
+    display: block;
+    justify-content: center;
+}
+
+.my-img {
+    width: 100%;
+    height: fit-content;
+}
+
+.me {
+    color: aliceblue;
+}
+
+iframe {
+    display: block;
+    height: 600px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.fs-set {
+    font-size: 60px;
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px){
+    .hi {
+        font-size: 120px;
+    }
+    
+    .me-banner {
+        font-size: 60px;
+        padding-right: 100px;
+    }
+}
+  
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px){
+
+}
+  
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+
+}
+
