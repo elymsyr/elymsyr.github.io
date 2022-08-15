@@ -195,9 +195,9 @@ header nav ul li a:hover {
 .contact-icons {
     display: inline-block;
     text-align: center;
-    width: 22.5%;
+    width: 30%;
     height: auto;
-    margin: 10px 1% 30px 1%;
+    margin: 10px 1% 10px 1%;
 }
 
 .contact-icons svg {
@@ -260,8 +260,6 @@ header nav ul li a:hover {
         right: 20px;
         overflow: hidden;
         top: 1325px;
-
-        
     }
 
     .my-img {
@@ -305,6 +303,14 @@ header nav ul li a:hover {
 
     .display-ib {
         display: inline-block;
+    }
+
+    .contact-icons {
+        display: inline-block;
+        text-align: center;
+        width: 22.5%;
+        height: auto;
+        margin: 10px 1% 30px 1%;
     }
     
     .contact-icons svg {
