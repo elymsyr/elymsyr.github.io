@@ -48,13 +48,20 @@ main {
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 80px;
     color: #fff;
+    display: inline-block;
+    width: fit-content;
     height: fit-content;
+}
+
+.display-b {
+    display: block;
 }
 
 .me-banner {
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 40px;
     color: #fff; 
+    z-index: 2;
 }
 
 .me-img {
@@ -216,8 +223,18 @@ header nav ul li a:hover {
 }
   
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px){
+@media (min-width: 767px) and (max-width: 1024px){
+    .hi {
+        font-size: 172px;
+    }
 
+    .fs-set {
+        font-size: 80px;
+    }
+
+    .me p {
+        font-size: 20px;
+    }
 }
   
 /* Media Query for Large screens */
@@ -261,7 +278,7 @@ header nav ul li a:hover {
         overflow: hidden;
         top: 1325px;
     }
-
+    
     .my-img {
         width: 20%;
         height: auto;
