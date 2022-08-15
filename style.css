@@ -7,10 +7,6 @@
     text-decoration: none;
 }
 
-html {
-    font-size: 8px;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -42,15 +38,27 @@ main {
 
 .hi {
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 10rem;
+    font-size: 80px;
+    color: #fff;
+    height: fit-content;
+    z-index: 3;
+}
+
+.hi-head {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 80px;
     color: #fff;
     height: fit-content;
 }
 
 .me-banner {
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 5rem;
+    font-size: 40px;
     color: #fff; 
+}
+
+.me-img {
+    display: none;
 }
 
 /* --------------------SCROLL ANIMATION---------------------- */
@@ -102,6 +110,7 @@ main {
     height: 50px;
     background-color: rgba(0, 0, 0, 0.575);
     backdrop-filter: blur(8px);
+    z-index: 4;
 }
 
 .sticky {
@@ -134,7 +143,7 @@ header nav ul li a {
     text-transform: uppercase;
     display: inline-block;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 12px;
     padding: 0 15px;
     background: #12c2e9;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff);  /* Chrome 10-25, Safari 5.1-6 */
@@ -168,55 +177,91 @@ header nav ul li a:hover {
     height: fit-content;
 }
 
+.about-me-img {
+    display: none;
+}
+
 .me {
+    width: 80%;
+    margin-right: 18%;
+    display: block;
     color: aliceblue;
 }
 
 .fs-set {
-    font-size: 6rem;
+    font-size: 48px;
 }
 
 .contact-icons {
     display: inline-block;
     text-align: center;
-    width: 20%;
+    width: 22.5%;
     height: auto;
-    margin: 10px 2% 30px 2%;
+    margin: 10px 1% 30px 1%;
+}
+
+.contact-icons svg {
+    width: 50px;
+    height: 50px;
 }
 
 .end-block {
     height: 10px;
     width: 100%;
-    background: #12c2e9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #12c2e9;
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
     position: relative;
     bottom: 0;
 }
   
 /* Media Query for Tablets Ipads portrait mode */
 @media (min-width: 768px) and (max-width: 1024px){
-    html {
-        font-size: 9px;
-    }
-}
-  
-/* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px){
-    html {
-        font-size: 10px;
-    }
+
 }
   
 /* Media Query for Large screens */
-@media (min-width: 1281px) {
-    html {
-        font-size: 11px;
+@media (min-width: 1025px) {
+    .header {
+        height: 50px;
     }
 
-    .header {
-        height: 55px;
+    .header a {
+        font-size: 12px;
+    }
+
+    .me-img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        justify-content: center;
+        align-content: center;
+        margin: 0;
+        padding: 0;
+        bottom: 40px;
+        z-index: inherit;
+        z-index: 1;
+    }
+
+    .me-img-size {
+        width: 480px;
+        height: auto;
+    }
+
+    .about-me-img {
+        position: absolute;
+        display: inline-block;
+        width: 340px;
+        height: auto;
+        padding: 0;
+        right: 20px;
+        overflow: hidden;
+        top: 1325px;
+
+        
     }
 
     .my-img {
@@ -227,21 +272,27 @@ header nav ul li a:hover {
     }
 
     .me {
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-        float: left;
-        width: 79%;
+        width: 80%;
+        margin-right: 18%;
+        display: block;
+        color: aliceblue;
     }
 
     .hi {
+        height: 50px;
         display: block;
-        margin: 20px 0;
+        margin: 0;
+    }
+
+    .work-heads {
+        font-size: 50px;
     }
 
     .me p {
-        font-size: 20px;
-        padding: 30px 10px 100px 20px;
+        font-size: 18px;
+        margin: 0;
+        padding: 10px 20% 35px 0px;
+        max-width: 100%;
     }
 
     .float-right-side {
@@ -255,8 +306,9 @@ header nav ul li a:hover {
     .display-ib {
         display: inline-block;
     }
-
-    .banner {
-        height: 100vh;
+    
+    .contact-icons svg {
+        width: 50px;
+        height: 50px;
     }
 }
