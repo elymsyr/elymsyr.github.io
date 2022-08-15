@@ -14,8 +14,6 @@ body {
     font-family: 'Catamaran', sans-serif;
 }
 
-/* --------------------MAIN I---------------------- */
-
 main {
     padding: 20px 50px 0;
 }
@@ -27,9 +25,9 @@ main {
 
 .background-text {
     width: fit-content;
-    background: #12c2e9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #12c2e9;
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -68,7 +66,6 @@ main {
     display: none;
 }
 
-/* --------------------SCROLL ANIMATION---------------------- */
 .container-mouse {
     display: block;
     justify-content: center;
@@ -107,8 +104,6 @@ main {
       transform: translateY(20px);
     }
   }
-
-/* --------------------HEADER---------------------- */
 
 .header {
     display: flex;
@@ -152,9 +147,9 @@ header nav ul li a {
     font-weight: 600;
     font-size: 12px;
     padding: 0 15px;
-    background: #12c2e9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #12c2e9;
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff);
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -168,7 +163,6 @@ header nav ul li a:hover {
     background-position: 0 100%;
 }
 
-  /* --------------------MAIN II (CONTENT)---------------------- */
 .main-content {
     padding: 0 40px;
 }
@@ -222,7 +216,6 @@ header nav ul li a:hover {
     bottom: 0;
 }
   
-/* Media Query for Tablets Ipads portrait mode */
 @media (min-width: 767px) and (max-width: 1024px){
     .hi {
         font-size: 172px;
@@ -237,7 +230,6 @@ header nav ul li a:hover {
     }
 }
   
-/* Media Query for Large screens */
 @media (min-width: 1025px) {
     .header {
         height: 50px;
