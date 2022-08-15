@@ -327,3 +327,111 @@ header nav ul li a:hover {
         height: 50px;
     }
 }
+
+@media only screen and (min-width: 1500px) {
+    .header {
+        height: 60px;
+    }
+
+    .header a {
+        font-size: 15px;
+    }
+
+    .me-banner {
+        font-size: 60px;
+    }
+
+    .me-img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        justify-content: center;
+        align-content: center;
+        margin: 0;
+        padding: 0;
+        top: 5px;
+        z-index: inherit;
+        z-index: 1;
+    }
+
+    .me-img-size {
+        width: auto;
+        height: 850px;
+    }
+
+    .about-me-img {
+        position: absolute;
+        display: inline-block;
+        width: 400px;
+        height: auto;
+        padding: 0;
+        right: 20px;
+        overflow: hidden;
+        top: 1400px;
+    }
+    
+    .my-img {
+        width: 20%;
+        height: auto;
+        display: inline-block;
+        float: left;
+    }
+
+    .me {
+        width: 80%;
+        margin-right: 18%;
+        display: block;
+        color: aliceblue;
+    }
+
+    .hi {
+        font-size: 180px;
+        height: 40px;
+        display: block;
+        margin: 0;
+    }
+
+    .hi-head {
+        display: block;
+        margin: 0;
+    }
+
+    .work-heads {
+        font-size: 150px;
+    }
+
+    .me p {
+        font-size: 25px;
+        margin: 0;
+        padding: 10px 20% 35px 0px;
+        max-width: 100%;
+    }
+
+    .float-right-side {
+        display: inline-block;
+        height: 50px;
+        width: 100%;
+        text-align: right;
+        float: right;
+    }
+
+    .display-ib {
+        display: inline-block;
+    }
+
+    .contact-icons {
+        display: inline-block;
+        text-align: center;
+        width: 22.5%;
+        height: auto;
+        margin: 10px 1% 30px 1%;
+    }
+    
+    .contact-icons svg {
+        width: 80px;
+        height: 80px;
+    }
+}
