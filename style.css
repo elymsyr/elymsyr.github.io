@@ -185,6 +185,11 @@ article {
         flex-direction: column;
     }
 
+    .ball {
+        width: 280px;
+        height: 280px;
+    }
+
     .logo {
         margin-bottom: 5%;
         pointer-events: none;
@@ -209,6 +214,11 @@ article {
 @media only screen and (min-width: 481px) and (max-width: 768px) {
     html {
         font-size: 11px;
+    }
+    
+    .ball {
+        width: 280px;
+        height: 280px;
     }
 
     main {
@@ -235,6 +245,11 @@ article {
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     html {
         font-size: 13px;
+    }
+    
+    .ball {
+        width: 280px;
+        height: 280px;
     }
 
     main {
