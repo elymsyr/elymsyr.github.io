@@ -177,7 +177,7 @@ article {
 
 @media only screen and (max-width: 480px) {
     html {
-        font-size: 10px;
+        font-size: 9.5px;
     }
 
     main {
@@ -196,6 +196,7 @@ article {
     .ball {
         height: 700px;
         width: 700px;
+        transition: all 10s ease-out;
     }
 
     .logo {
