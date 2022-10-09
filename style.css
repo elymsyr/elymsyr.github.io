@@ -177,7 +177,7 @@ article {
 
 @media only screen and (max-width: 480px) {
     html {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     main {
@@ -185,6 +185,17 @@ article {
         height: 80vh;
         padding: 5%;
         flex-direction: column;
+    }
+
+    .eye {
+        width: 100vw;
+        height: 100vh;
+
+    }
+
+    .ball {
+        height: 700px;
+        width: 700px;
     }
 
     .logo {
