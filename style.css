@@ -1,434 +1,256 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100&display=swap');
-
-
 * {
-    scroll-behavior: smooth;
-    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    color: #111;
+    user-select: none;
 }
 
 body {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
-    background-color: #000;
-    font-family: 'Catamaran', sans-serif;
+    background-color: #111;
+    color: #111;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    overflow: hidden;
+    font-size: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #111;
+    font-size: 5rem;
+}
+
+button {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #111;
+    border-radius: 50%;
+}
+
+.eye{
+    position: fixed;
+    width: 125%;
+    height: 125%;
+    border-radius: 50%;
+    position: absolute;
+    transition: all 2s ease-out;
+    z-index: 2;
+    transform: scale(1.5) translateY(35%);
+}
+
+.ball{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(50px);
+    border-radius: 50%;
+    transition: all .4s ease-out;
+    box-shadow:
+    inset 0 0 50px #fff,
+    inset 20px 0 80px #f0f,
+    inset -20px 0 80px #0ff,
+    inset 20px 0 300px #f0f,
+    inset -20px 0 300px #0ff,
+    0 0 50px #fff,
+    -10px 0 80px #f0f,
+    10px 0 80px #0ff;
+}
+
+#start-btn {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.started {
+    z-index: -10 !important;
+    animation: ball-back 1s ease-in;
+    transform: scale(1) translate(0);
+}
+
+.main-animate {
+    animation: main-front 1s ease-in;
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes ball-back {
+    0% {
+        transform: scale(1.5) translateY(35%);
+    }
+
+
+
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes main-front {
+    0% {
+        transform: scale(.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 main {
-    padding: 20px 50px 0;
-}
-
-.banner {
-    width: 100%;
-    height: fit-content;
-}
-
-.background-text {
-    width: fit-content;
-    background: #12c2e9;
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-}
-
-.hi {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 80px;
-    color: #fff;
-    height: fit-content;
-    z-index: 3;
-}
-
-.hi-head {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 80px;
-    color: #fff;
-    display: inline-block;
-    width: fit-content;
-    height: fit-content;
-}
-
-.display-b {
-    display: block;
-}
-
-.me-banner {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 40px;
-    color: #fff; 
-    z-index: 2;
-}
-
-.me-img {
-    display: none;
-}
-
-.container-mouse {
-    display: block;
-    justify-content: center;
-    padding-top: 20px;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.mouse-btn {
-    margin: 10px auto;
-    width: 40px;
-    height: 80px;
-    border: 3px solid rgba(122, 122, 124, 0.918);
-    border-radius: 20px;
-    display: flex;
-  }
-  
-  .mouse-scroll {
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(170deg, rgba(122, 122, 124, 0.918), rgb(123, 124, 124));
-    border-radius: 50%;
-    margin: auto;
-    animation: scrolling13 1s linear infinite;
-  }
-  
-  @keyframes scrolling13 {
-    0% {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-  
-    100% {
-      opacity: 1;
-      transform: translateY(20px);
-    }
-  }
-
-.header {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.575);
-    backdrop-filter: blur(8px);
-    z-index: 4;
-}
-
-.sticky {
-    position: sticky;
-    top: -1px;
-    width: 100%;
-}
-
-.margin-set {
-    margin: 0 0 20px 0;
-}
-
-header nav {
-    display: inline-block;
-    margin: 16px 10px;
-}
-
-ul {
-    padding: 0;
-    margin: 0;
-}
-
-header nav ul li {
-    display: inline-block;
-}
-
-header nav ul li a {
+    width: 80vw;
+    height: 70vh;
+    backdrop-filter: blur(50px);
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: scale(.8);
     overflow: hidden;
-    position: relative;
-    text-transform: uppercase;
-    display: inline-block;
-    font-weight: 600;
-    font-size: 12px;
-    padding: 0 15px;
-    background: #12c2e9;
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff);
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9, #fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    background-size: 1200% 100%;
-    background-position: 100%;
-    transition: background-position 1.6s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5%;
 }
 
-header nav ul li a:hover {
-    background-position: 0 100%;
-}
-
-.main-content {
-    padding: 0 40px;
-}
-
-.about-me, .works, .contact {
-    padding-top: 25px;
-    display: block;
-    justify-content: center;
-}
-
-.my-img {
-    width: 100%;
+main nav {
+    width: fit-content;
     height: fit-content;
 }
 
-.about-me-img {
-    display: none;
+.logo {
+    margin-bottom: 35%;
+    pointer-events: none;
+    text-transform: uppercase;
 }
 
-.me {
-    width: 80%;
-    margin-right: 18%;
-    display: block;
-    color: aliceblue;
+main nav ul li {
+    font-size: 4rem;
+    cursor: pointer;
 }
 
-.fs-set {
-    font-size: 48px;
+.show {
+    width: 50%;
+    display: flex !important;
+    height: 100%;
+    flex-direction: column;
 }
 
-.contact-icons {
-    display: inline-block;
-    text-align: center;
-    width: 30%;
-    height: auto;
-    margin: 10px 1% 10px 1%;
+article {
+   display: none;
 }
 
-.contact-icons svg {
-    width: 50px;
-    height: 50px;
+.disabled:hover {
+    text-decoration: line-through;
 }
 
-.end-block {
-    height: 10px;
-    width: 100%;
-    background: #12c2e9;
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
-    position: relative;
-    bottom: 0;
+.underscore {
+    text-decoration: underline;
 }
-  
-@media only screen and (min-width: 767px) and (min-height: 999px) {
-    .hi {
-        font-size: 172px;
+
+@media only screen and (max-width: 480px) {
+    html {
+        font-size: 9px;
     }
 
-    .fs-set {
-        font-size: 80px;
+    main {
+        width: 82vw;
+        height: 80vh;
+        padding: 5%;
+        flex-direction: column;
     }
 
-    .me p {
-        font-size: 20px;
-    }
-}
-  
-@media only screen and (min-width: 1000px) {
-    .header {
-        height: 50px;
-    }
-
-    .header a {
-        font-size: 12px;
-    }
-
-    .me-img {
-        position: absolute;
-        left: 0;
-        right: 0;
-        display: flex;
-        width: 100%;
-        height: fit-content;
-        justify-content: center;
-        align-content: center;
-        margin: 0;
-        padding: 0;
-        top: 5px;
-        z-index: inherit;
-        z-index: 1;
-    }
-
-    .me-img-size {
-        width: 480px;
-        height: auto;
-    }
-
-    .about-me-img {
-        position: absolute;
-        display: inline-block;
-        width: 340px;
-        height: auto;
-        padding: 0;
-        right: 20px;
-        overflow: hidden;
-        top: 1325px;
+    .logo {
+        margin-bottom: 5%;
+        pointer-events: none;
     }
     
-    .my-img {
-        width: 20%;
-        height: auto;
-        float: left;
-    }
-
-    .me {
-        width: 80%;
-        margin-right: 18%;
-        display: block;
-        color: aliceblue;
-    }
-
-    .hi {
-        height: 50px;
-        display: block;
-        margin: 0;
-    }
-
-    .work-heads {
-        font-size: 50px;
-    }
-
-    .me p {
-        font-size: 18px;
-        margin: 0;
-        padding: 10px 20% 35px 0px;
-        max-width: 100%;
-    }
-
-    .float-right-side {
-        height: fit-content;
+    .show {
         width: 100%;
-        text-align: right;
-        float: right;
-    }
-
-    .display-ib {
-        display: inline-block;
-    }
-
-    .contact-icons {
-        display: inline-block;
-        text-align: center;
-        width: 22.5%;
+        display: flex !important;
         height: auto;
-        margin: 10px 1% 30px 1%;
+        flex-direction: column;
+        position: unset;
     }
-    
-    .contact-icons svg {
-        width: 50px;
-        height: 50px;
+
+    @media only screen and (max-height: 668px) {
+        main {
+            width: 85vw;
+            height: 90vh;
+        }
     }
 }
 
-@media only screen and (min-width: 1400px) {
-    .header {
-        height: 60px;
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 11px;
     }
 
-    .header a {
-        font-size: 15px;
+    main {
+        width: 80vw;
+        height: 78vh;
+        padding: 5%;
+        flex-direction: column;
     }
 
-    .me-banner {
-        font-size: 50px;
-        margin-left: 80px;
-    }
-
-    .me-img {
-        position: absolute;
-        left: 0;
-        right: 0;
-        display: flex;
-        width: 100%;
-        height: fit-content;
-        justify-content: center;
-        align-content: center;
-        margin: 0;
-        padding: 0;
-        top: 0;
-        z-index: inherit;
-        z-index: 1;
-    }
-
-    .me-img-size {
-        width: auto;
-        height: 850px;
-    }
-
-    .about-me-img {
-        position: absolute;
-        display: inline-block;
-        width: 400px;
-        height: auto;
-        padding: 0;
-        right: 20px;
-        overflow: hidden;
-        top: 2490px;
+    .logo {
+        margin-bottom: 5%;
+        pointer-events: none;
     }
     
-    .my-img {
-        width: 20%;
-        height: auto;
-        float: left;
-    }
-
-    .me {
-        width: 80%;
-        margin-right: 18%;
-        display: block;
-        color: aliceblue;
-    }
-
-    .hi {
-        font-size: 180px;
-        height: 50px;
-        display: block;
-        margin: 0 120px 0 80px;
-    }
-
-    .hi-head {
-        display: block;
-        margin: 0;
-    }
-
-    .work-heads {
-        font-size: 150px;
-    }
-
-    .me p {
-        font-size: 25px;
-        margin: 0;
-        padding: 10px 20% 35px 0px;
-        max-width: 100%;
-    }
-
-    .float-right-side {
-        height: fit-content;
+    .show {
         width: 100%;
-        text-align: right;
-        float: right;
-    }
-
-    .display-ib {
-        display: inline-block;
-    }
-
-    .contact-icons {
-        display: inline-block;
-        text-align: center;
-        width: 22.5%;
+        display: flex !important;
         height: auto;
-        margin: 10px 1% 30px 1%;
+        flex-direction: column;
+        position: unset;
     }
-    
-    .contact-icons svg {
-        width: 80px;
-        height: 80px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    html {
+        font-size: 13px;
+    }
+
+    main {
+        width: 80vw;
+        height: 80vh;
+        padding: 5%;
+    }
+
+    .logo {
+        margin-bottom: 5%;
+        pointer-events: none;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    html {
+        font-size: 13px;
     }
 }
