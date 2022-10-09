@@ -196,7 +196,7 @@ article {
     .ball {
         height: 700px;
         width: 700px;
-        transition: all 15s ease-out;
+        transition: all 15s ease-out !important;
     }
 
     .logo {
