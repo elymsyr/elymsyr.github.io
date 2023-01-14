@@ -194,8 +194,8 @@ article {
     }
 
     .ball {
-        height: 700px;
-        width: 700px;
+        height: 1700px;
+        width: 1700px;
         transition: all 15s ease-out !important;
     }
 
