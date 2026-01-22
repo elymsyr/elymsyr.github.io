@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Master Tool - The Ultimate Offline TTRPG Assistant</title>
+    <meta name="description"
+        content="A portable, offline-first DM tool designed for dual-monitor setups. Manage combat, track branching timelines, and project a rich campaign wiki to your players seamlessly.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/icon.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="background-glob"></div>
+    <div class="background-glob-2"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="images/icon.png" alt="DM Tool Logo" class="logo-img">
+                DM Tool
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#features" onclick="toggleMenu()">Features</a>
+                <a href="#showcase" onclick="toggleMenu()">Gallery</a>
+                <a href="#download" onclick="toggleMenu()">Download</a>
+                <a href="https://github.com/elymsyr/dungeon-master-tool" target="_blank" class="github-link">
+                    <i data-lucide="github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <!-- Bu badge JS ile güncellenecek, varsayılan değer kalabilir -->
+                <div class="badge" id="hero-badge">Latest Version Available</div>
+                <h1>Master Your Campaign <br><span class="gradient-text">Like Never Before</span></h1>
+                <p class="hero-subtitle">
+                    A portable, offline-first Dungeon Master tool designed specifically for dual-monitor setups.
+                    Manage combat, branching timelines, and player projections without internet.
+                </p>
+                <div class="hero-actions">
+                    <a href="#download" class="btn btn-primary">
+                        <i data-lucide="download"></i> Download for Free
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        Explore Features
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="window-frame">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <!-- Ana ekran görüntüsü -->
+                    <img src="images/main_0.png" alt="Dungeon Master Tool Interface">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Forged for <span class="gradient-text">Storytellers</span></h2>
+                <p>Everything you need to run immersive sessions, right at your fingertips.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="monitor"></i>
+                    </div>
+                    <h3>Dual Monitor Projection</h3>
+                    <p>Drag & drop NPCs, items, or maps to instantly project them to a second screen for your players.
+                        Multi-image split view supported.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="cloud-fog"></i>
+                    </div>
+                    <h3>Interactive Fog of War</h3>
+                    <p>Draw fog to hide secrets and erase it to reveal rooms. State persists per encounter
+                        automatically.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="film"></i>
+                    </div>
+                    <h3>Animated Maps</h3>
+                    <p>Support for local video files (.mp4, .webm) to create immersive, moving battlegrounds that
+                        breathe life into combat.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="music"></i>
+                    </div>
+                    <h3>Adaptive Soundpad</h3>
+                    <p>Layered music system with intensity sliders (Base, Low, High) and instant SFX. Import your own
+                        custom tracks and themes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="git-branch"></i>
+                    </div>
+                    <h3>Branching Timelines</h3>
+                    <p>Map-based tracker for stories with branching paths, travel lines, and session-linked events.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="wifi-off"></i>
+                    </div>
+                    <h3>Offline First</h3>
+                    <p>No internet? No problem. All data is stored locally in high-speed MsgPack format. Portable and
+                        secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="showcase" class="showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visual <span class="gradient-text">Showcase</span></h2>
+                <p>A peek into the toolkit.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/battlemap.png" alt="Battlemap">
+                    <div class="caption">Tactical Battlemap</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/session_0.png" alt="Session View">
+                    <div class="caption">Session Management</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/api.png" alt="API Browser">
+                    <div class="caption">Integrated API Browser</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/map_0.png" alt="World Map">
+                    <div class="caption">World Mapping</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-card">
+                <h2>Start Your Adventure</h2>
+                <p>Join other DMs enhancing their table with the Dungeon Master Tool.</p>
+
+                <div class="os-tabs-container">
+                    <div class="os-header">
+                        <button class="os-btn active" onclick="switchTab('windows')">
+                            <i data-lucide="monitor"></i> Windows
+                        </button>
+                        <button class="os-btn" onclick="switchTab('linux')">
+                            <i data-lucide="terminal"></i> Linux
+                        </button>
+                    </div>
+
+                    <div class="os-content-wrapper">
+                        <!-- WINDOWS TAB -->
+                        <div id="windows-content" class="download-content active">
+                            <p class="tab-desc">Recommended for most users.</p>
+
+                            <!-- DYNAMIC BUTTON -->
+                            <a id="download-win-btn" href="#" class="btn btn-primary large">
+                                <i data-lucide="download"></i> Download Windows .zip
+                            </a>
+
+                            <!-- DYNAMIC VERSION TEXT -->
+                            <span id="version-text" class="version-info">Loading version...</span>
+                        </div>
+
+                        <!-- LINUX TAB -->
+                        <div id="linux-content" class="download-content">
+                            <p class="tab-desc">Automated installation via script.</p>
+                            <div class="code-block">
+                                <!-- DYNAMIC CODE BLOCK -->
+                                <pre id="linux-code-text">git clone https://github.com/elymsyr/dungeon-master-tool.git
+cd dungeon-master-tool
+bash installer/install.sh</pre>
+                                <button class="copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-left">
+                <a href="#" class="footer-brand">
+                    <img src="images/icon.png" alt="DM Tool Logo" class="footer-logo-img">
+                    <span>DM Tool</span>
+                </a>
+                <p class="footer-desc">Open source tabletop RPG management suite designed for immersive storytelling.
+                </p>
+                <p class="footer-credit">Mage icons created by David Carapinha - Flaticon</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/elymsyr/dungeon-master-tool/blob/main/LICENSE">License</a>
+                <a href="https://github.com/elymsyr/dungeon-master-tool/issues">Report Issue</a>
+                <a href="https://github.com/elymsyr/dungeon-master-tool">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+
+        // ---------------------------------------------------------
+        // GITHUB API INTEGRATION
+        // ---------------------------------------------------------
+        const REPO_OWNER = "elymsyr";
+        const REPO_NAME = "dungeon-master-tool";
+
+        async function fetchLatestRelease() {
+            const winBtn = document.getElementById('download-win-btn');
+            const verText = document.getElementById('version-text');
+            const badgeText = document.getElementById('hero-badge');
+            const linuxCode = document.getElementById('linux-code-text');
+
+            try {
+                // 1. Fetch latest release data
+                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`);
+
+                if (!response.ok) throw new Error("API Error");
+
+                const data = await response.json();
+                const version = data.tag_name; // e.g., "v0.6.1"
+
+                // 2. Update Text Elements
+                verText.innerHTML = `${version} • 64-bit`;
+                if (badgeText) badgeText.innerText = `${version} Available`;
+
+                // 3. Find Windows ZIP Asset
+                const winAsset = data.assets.find(asset =>
+                    asset.name.endsWith('.zip') || asset.name.toLowerCase().includes('windows')
+                );
+
+                if (winAsset) {
+                    winBtn.href = winAsset.browser_download_url;
+                    winBtn.innerHTML = `<i data-lucide="download"></i> Download ${version}`;
+                } else {
+                    // Fallback if no asset found
+                    winBtn.href = data.html_url;
+                    winBtn.innerHTML = `<i data-lucide="external-link"></i> Go to Releases`;
+                }
+
+                // 4. Update Linux Command to Checkout Specific Version
+                // This ensures Linux users get the stable release tag, not the dev branch.
+                const newLinuxCommand = `git clone https://github.com/${REPO_OWNER}/${REPO_NAME}.git
+cd ${REPO_NAME}
+git checkout ${version}
+bash installer/install.sh`;
+
+                linuxCode.textContent = newLinuxCommand;
+
+                // Re-init icons for updated HTML
+                lucide.createIcons();
+
+            } catch (error) {
+                console.error("GitHub release fetch failed:", error);
+                // Fallback links
+                winBtn.href = `https://github.com/${REPO_OWNER}/${REPO_NAME}/releases/latest`;
+                verText.innerHTML = "Latest Release";
+            }
+        }
+
+        // ---------------------------------------------------------
+        // UI INTERACTIONS
+        // ---------------------------------------------------------
+
+        // Tab Switcher
+        function switchTab(os) {
+            document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.download-content').forEach(content => content.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(os + '-content').classList.add('active');
+        }
+
+        // Copy Code Function
+        function copyCode(btn) {
+            const code = btn.previousElementSibling.innerText;
+            navigator.clipboard.writeText(code);
+            const originalIcon = btn.innerHTML;
+
+            // Visual feedback
+            btn.innerHTML = '<i data-lucide="check"></i>';
+            btn.style.color = 'var(--accent)';
+
+            lucide.createIcons();
+
+            setTimeout(() => {
+                btn.innerHTML = originalIcon;
+                btn.style.color = ''; // Reset color
+                lucide.createIcons();
+            }, 2000);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            if (window.innerWidth <= 768) {
+                document.getElementById('navLinks').classList.toggle('active');
+            }
+        }
+
+        // Run on Load
+        document.addEventListener("DOMContentLoaded", fetchLatestRelease);
+    </script>
+</body>
+
+</html>
