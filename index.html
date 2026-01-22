@@ -152,21 +152,10 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/battlemap.png" alt="Battlemap">
-                    <div class="caption">Tactical Battlemap</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/session_0.png" alt="Session View">
-                    <div class="caption">Session Management</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/api.png" alt="API Browser">
-                    <div class="caption">Integrated API Browser</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/map_0.png" alt="World Map">
-                    <div class="caption">World Mapping</div>
+                <!-- Gallery items will be injected here by JS -->
+                <div class="gallery-item"
+                    style="height: 300px; display: flex; align-items: center; justify-content: center; background: #111;">
+                    <span style="color: var(--text-muted);">Loading Gallery...</span>
                 </div>
             </div>
         </div>
@@ -341,7 +330,59 @@ bash installer/install.sh`;
         }
 
         // Run on Load
-        document.addEventListener("DOMContentLoaded", fetchLatestRelease);
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchLatestRelease();
+            loadGallery();
+        });
+
+        // ---------------------------------------------------------
+        // DYNAMIC GALLERY (STATIC LIST)
+        // ---------------------------------------------------------
+
+        async function loadGallery() {
+            const galleryGrid = document.querySelector('.gallery-grid');
+            if (!galleryGrid) return;
+
+            // Updated manually based on 'images' folder content
+            const imageList = [
+                "main_0.png",
+                "main_1.png",
+                "main_2.png",
+                "map_0.png",
+                "map_1.png",
+                "mind_0.png",
+                "session_0.png",
+                "session_1.png"
+            ];
+
+            // Clear existing content
+            galleryGrid.innerHTML = '';
+
+            if (imageList.length === 0) {
+                galleryGrid.innerHTML = '<p style="text-align:center; color:var(--text-muted);">No images found.</p>';
+                return;
+            }
+
+            imageList.forEach(filename => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+
+                // Cleanup name for caption: "battlemap.png" -> "Battlemap"
+                let caption = filename.split('.')[0];
+                caption = caption.replace(/_/g, ' '); // Replace underscores
+                // Capitalize Words
+                caption = caption.replace(/\b\w/g, l => l.toUpperCase());
+
+                const src = `images/${filename}`;
+
+                item.innerHTML = `
+                    <img src="${src}" alt="${caption}" loading="lazy">
+                    <div class="caption">${caption}</div>
+                `;
+
+                galleryGrid.appendChild(item);
+            });
+        }
     </script>
 </body>
 
