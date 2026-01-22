@@ -1,0 +1,1188 @@
+Directory tree:
+
+./
+    style.css
+    README.md
+    .gitattributes
+    index.html
+    images/
+        main_0.png
+        map_0.png
+        bulk.png
+        api.png
+        main_2.png
+        icon.png
+        main_1.png
+        map_1.png
+        battlemap.png
+        session_1.png
+        session_0.png
+
+================================================================================
+
+style.css:
+
+:root {
+    /* Theme Colors - Warmer & Richer */
+    --bg-color: #0b0908;
+    --bg-secondary: #14100e;
+    --text-color: #e0d8c8;
+    --text-muted: #8d8579;
+
+    --primary: #9e2a2b;
+    /* Blood Red */
+    --primary-hover: #b93b3c;
+    --accent: #d4a373;
+    /* Gold/Bronze */
+
+    --card-bg: #1c1917;
+    --card-border: #3d342b;
+    --nav-bg: rgba(11, 9, 8, 0.95);
+
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image:
+        linear-gradient(rgba(11, 9, 8, 0.9), rgba(11, 9, 8, 0.9)),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c2520' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Background Glows */
+.background-glob {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 70vw;
+    height: 70vw;
+    background: radial-gradient(circle, rgba(158, 42, 43, 0.15) 0%, rgba(0, 0, 0, 0) 60%);
+    filter: blur(80px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-glob-2 {
+    position: absolute;
+    top: 40%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(212, 163, 115, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
+    filter: blur(80px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    color: #fff;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #ffd782, #b07d62);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0px 0px 20px rgba(212, 163, 115, 0.15);
+}
+
+/* --- BUTTONS: Sharp & Stylish --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-heading);
+    border: none;
+    position: relative;
+    border-radius: 0;
+    /* Sharp corners */
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    /* Solid shadow effect */
+    box-shadow: 0 0 0 1px var(--primary), 4px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translate(-1px, -1px);
+    /* Slight lift */
+    box-shadow: 0 0 0 1px #ff5e5e, 6px 6px 0 rgba(0, 0, 0, 0.8);
+    /* Expanded shadow */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.btn-primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    /* Border look */
+    box-shadow: inset 0 0 0 2px var(--card-border);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--accent);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.logo-img {
+    height: 36px;
+    width: auto;
+    filter: drop-shadow(0 0 5px rgba(212, 163, 115, 0.2));
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.github-link {
+    color: #fff !important;
+}
+
+/* Mobile menu hidden on desktop */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    padding: 180px 0 120px;
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: rgba(158, 42, 43, 0.15);
+    border: 1px solid var(--primary);
+    font-size: 0.75rem;
+    color: #ff5e5e;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    border-radius: 0;
+    /* Sharp */
+}
+
+.hero-content h1 {
+    font-size: 3.8rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+    line-height: 1.7;
+    border-left: 3px solid var(--primary);
+    padding-left: 1.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Window Frame */
+.window-frame {
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 0;
+    /* Sharp */
+    box-shadow:
+        0 0 0 1px #000,
+        0 20px 50px -10px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(212, 163, 115, 0.05);
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.window-frame:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.window-header {
+    background: #1a1a1a;
+    padding: 0.6rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid #333;
+}
+
+/* Dots remain round as they represent window controls */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #444;
+}
+
+.dot.red {
+    background: #ff5f56;
+}
+
+.dot.yellow {
+    background: #ffbd2e;
+}
+
+.dot.green {
+    background: #27c93f;
+}
+
+.window-frame img {
+    width: 100%;
+    display: block;
+}
+
+/* Features */
+.features {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+    position: relative;
+    border-top: 1px solid var(--card-border);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Feature Card - Sharp */
+.feature-card {
+    background: linear-gradient(145deg, #1e1b19 0%, #161412 100%);
+    box-shadow: inset 0 0 0 1px var(--card-border);
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    /* Sharp */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: inset 0 0 0 1px var(--accent);
+    background: linear-gradient(145deg, #1f1b18 0%, #1a1614 100%);
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    border-radius: 0;
+    /* Sharp */
+}
+
+.feature-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+}
+
+/* Showcase */
+.showcase {
+    padding: 100px 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.gallery-item {
+    border: 1px solid var(--card-border);
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    /* Sharp */
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(0.9);
+}
+
+.gallery-item:hover {
+    border-color: var(--accent);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, transparent 100%);
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    z-index: 3;
+    border-bottom: 3px solid var(--primary);
+}
+
+/* Download Section */
+.download {
+    padding: 50px 0 150px;
+}
+
+.download-card {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(10, 10, 10, 0.95));
+    box-shadow: inset 0 0 0 1px var(--card-border);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    border-radius: 0;
+    /* Sharp */
+}
+
+/* Decorative Lines inside download card - Adjusted for sharp look */
+.download-card::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 1px solid rgba(158, 42, 43, 0.3);
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 0;
+}
+
+.download-card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.os-tabs-container {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid var(--card-border);
+    background: #0a0a0a;
+    position: relative;
+    z-index: 2;
+    border-radius: 0;
+    /* Sharp */
+}
+
+.os-header {
+    display: flex;
+    border-bottom: 1px solid var(--card-border);
+    background: #141414;
+}
+
+.os-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 1rem;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+.os-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.os-btn.active {
+    color: var(--accent);
+    background: #0a0a0a;
+    border-bottom-color: var(--accent);
+}
+
+.os-content-wrapper {
+    padding: 2rem;
+    /* REDUCED HEIGHT */
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.download-content {
+    display: none;
+    width: 100%;
+    animation: fadeIn 0.4s ease;
+    flex-direction: column;
+    align-items: center;
+}
+
+.download-content.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-desc {
+    margin-bottom: 1.5rem;
+    /* Reduced margin */
+    color: var(--text-muted);
+}
+
+.version-info {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Code Block - Scrollable */
+.code-block {
+    background: #111;
+    border-left: 3px solid var(--primary);
+    padding: 0.8rem;
+    /* Reduced Padding */
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    position: relative;
+    color: #ccc;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 0;
+    /* Sharp */
+    overflow-x: auto;
+    /* Fixes text overflow */
+    margin-bottom: 0;
+    /* Remove excess bottom space */
+}
+
+/* Scrollbar for code block */
+.code-block::-webkit-scrollbar {
+    height: 6px;
+}
+
+.code-block::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.code-block::-webkit-scrollbar-thumb {
+    background: #333;
+}
+
+.copy-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: transparent;
+    border: 1px solid #333;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    transition: all 0.2s;
+    border-radius: 0;
+    /* Sharp */
+}
+
+.copy-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Footer */
+footer {
+    background: #050505;
+    border-top: 4px solid var(--primary);
+    padding: 4rem 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 400px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.footer-logo-img {
+    width: 32px;
+    height: auto;
+}
+
+.footer-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.footer-credit {
+    font-size: 0.75rem;
+    color: #444;
+    margin-top: 1rem;
+}
+
+.footer-credit a {
+    color: #555;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    padding-top: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero {
+        padding-top: 140px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        margin: 0 auto 2.5rem;
+        border-left: none;
+        padding: 0;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .download-card {
+        padding: 3rem 1.5rem;
+    }
+
+    .download-card::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        height: calc(100vh - 80px);
+        width: 100%;
+        background: var(--bg-color);
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        border-top: 1px solid var(--card-border);
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+--------------------------------------------------------------------------------
+
+index.html:
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Master Tool - The Ultimate Offline TTRPG Assistant</title>
+    <meta name="description"
+        content="A portable, offline-first DM tool designed for dual-monitor setups. Manage combat, track branching timelines, and project a rich campaign wiki to your players seamlessly.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/icon.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="background-glob"></div>
+    <div class="background-glob-2"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="images/icon.png" alt="DM Tool Logo" class="logo-img">
+                DM Tool
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#features" onclick="toggleMenu()">Features</a>
+                <a href="#showcase" onclick="toggleMenu()">Gallery</a>
+                <a href="#download" onclick="toggleMenu()">Download</a>
+                <a href="https://github.com/elymsyr/dungeon-master-tool" target="_blank" class="github-link">
+                    <i data-lucide="github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <!-- Bu badge JS ile güncellenecek, varsayılan değer kalabilir -->
+                <div class="badge" id="hero-badge">Latest Version Available</div>
+                <h1>Master Your Campaign <br><span class="gradient-text">Like Never Before</span></h1>
+                <p class="hero-subtitle">
+                    A portable, offline-first Dungeon Master tool designed specifically for dual-monitor setups.
+                    Manage combat, branching timelines, and player projections without internet.
+                </p>
+                <div class="hero-actions">
+                    <a href="#download" class="btn btn-primary">
+                        <i data-lucide="download"></i> Download for Free
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        Explore Features
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="window-frame">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <!-- Ana ekran görüntüsü -->
+                    <img src="images/main_0.png" alt="Dungeon Master Tool Interface">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Forged for <span class="gradient-text">Storytellers</span></h2>
+                <p>Everything you need to run immersive sessions, right at your fingertips.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="monitor"></i>
+                    </div>
+                    <h3>Dual Monitor Projection</h3>
+                    <p>Drag & drop NPCs, items, or maps to instantly project them to a second screen for your players.
+                        Multi-image split view supported.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="cloud-fog"></i>
+                    </div>
+                    <h3>Interactive Fog of War</h3>
+                    <p>Draw fog to hide secrets and erase it to reveal rooms. State persists per encounter
+                        automatically.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="film"></i>
+                    </div>
+                    <h3>Animated Maps</h3>
+                    <p>Support for local video files (.mp4, .webm) to create immersive, moving battlegrounds that
+                        breathe life into combat.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="music"></i>
+                    </div>
+                    <h3>Adaptive Soundpad</h3>
+                    <p>Layered music system with intensity sliders (Base, Low, High) and instant SFX. Import your own
+                        custom tracks and themes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="git-branch"></i>
+                    </div>
+                    <h3>Branching Timelines</h3>
+                    <p>Map-based tracker for stories with branching paths, travel lines, and session-linked events.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="wifi-off"></i>
+                    </div>
+                    <h3>Offline First</h3>
+                    <p>No internet? No problem. All data is stored locally in high-speed MsgPack format. Portable and
+                        secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="showcase" class="showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visual <span class="gradient-text">Showcase</span></h2>
+                <p>A peek into the toolkit.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/battlemap.png" alt="Battlemap">
+                    <div class="caption">Tactical Battlemap</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/session_0.png" alt="Session View">
+                    <div class="caption">Session Management</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/api.png" alt="API Browser">
+                    <div class="caption">Integrated API Browser</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/map_0.png" alt="World Map">
+                    <div class="caption">World Mapping</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-card">
+                <h2>Start Your Adventure</h2>
+                <p>Join other DMs enhancing their table with the Dungeon Master Tool.</p>
+
+                <div class="os-tabs-container">
+                    <div class="os-header">
+                        <button class="os-btn active" onclick="switchTab('windows')">
+                            <i data-lucide="monitor"></i> Windows
+                        </button>
+                        <button class="os-btn" onclick="switchTab('linux')">
+                            <i data-lucide="terminal"></i> Linux
+                        </button>
+                    </div>
+
+                    <div class="os-content-wrapper">
+                        <!-- WINDOWS TAB -->
+                        <div id="windows-content" class="download-content active">
+                            <p class="tab-desc">Recommended for most users.</p>
+
+                            <!-- DYNAMIC BUTTON -->
+                            <a id="download-win-btn" href="#" class="btn btn-primary large">
+                                <i data-lucide="download"></i> Download Windows .zip
+                            </a>
+
+                            <!-- DYNAMIC VERSION TEXT -->
+                            <span id="version-text" class="version-info">Loading version...</span>
+                        </div>
+
+                        <!-- LINUX TAB -->
+                        <div id="linux-content" class="download-content">
+                            <p class="tab-desc">Automated installation via script.</p>
+                            <div class="code-block">
+                                <!-- DYNAMIC CODE BLOCK -->
+                                <pre id="linux-code-text">git clone https://github.com/elymsyr/dungeon-master-tool.git
+cd dungeon-master-tool
+bash installer/install.sh</pre>
+                                <button class="copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-left">
+                <a href="#" class="footer-brand">
+                    <img src="images/icon.png" alt="DM Tool Logo" class="footer-logo-img">
+                    <span>DM Tool</span>
+                </a>
+                <p class="footer-desc">Open source tabletop RPG management suite designed for immersive storytelling.
+                </p>
+                <p class="footer-credit">Mage icons created by David Carapinha - Flaticon</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/elymsyr/dungeon-master-tool/blob/main/LICENSE">License</a>
+                <a href="https://github.com/elymsyr/dungeon-master-tool/issues">Report Issue</a>
+                <a href="https://github.com/elymsyr/dungeon-master-tool">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+
+        // ---------------------------------------------------------
+        // GITHUB API INTEGRATION
+        // ---------------------------------------------------------
+        const REPO_OWNER = "elymsyr";
+        const REPO_NAME = "dungeon-master-tool";
+
+        async function fetchLatestRelease() {
+            const winBtn = document.getElementById('download-win-btn');
+            const verText = document.getElementById('version-text');
+            const badgeText = document.getElementById('hero-badge');
+            const linuxCode = document.getElementById('linux-code-text');
+
+            try {
+                // 1. Fetch latest release data
+                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`);
+
+                if (!response.ok) throw new Error("API Error");
+
+                const data = await response.json();
+                const version = data.tag_name; // e.g., "v0.6.1"
+
+                // 2. Update Text Elements
+                verText.innerHTML = `${version} • 64-bit`;
+                if (badgeText) badgeText.innerText = `${version} Available`;
+
+                // 3. Find Windows ZIP Asset
+                const winAsset = data.assets.find(asset =>
+                    asset.name.endsWith('.zip') || asset.name.toLowerCase().includes('windows')
+                );
+
+                if (winAsset) {
+                    winBtn.href = winAsset.browser_download_url;
+                    winBtn.innerHTML = `<i data-lucide="download"></i> Download ${version}`;
+                } else {
+                    // Fallback if no asset found
+                    winBtn.href = data.html_url;
+                    winBtn.innerHTML = `<i data-lucide="external-link"></i> Go to Releases`;
+                }
+
+                // 4. Update Linux Command to Checkout Specific Version
+                // This ensures Linux users get the stable release tag, not the dev branch.
+                const newLinuxCommand = `git clone https://github.com/${REPO_OWNER}/${REPO_NAME}.git
+cd ${REPO_NAME}
+git checkout ${version}
+bash installer/install.sh`;
+
+                linuxCode.textContent = newLinuxCommand;
+
+                // Re-init icons for updated HTML
+                lucide.createIcons();
+
+            } catch (error) {
+                console.error("GitHub release fetch failed:", error);
+                // Fallback links
+                winBtn.href = `https://github.com/${REPO_OWNER}/${REPO_NAME}/releases/latest`;
+                verText.innerHTML = "Latest Release";
+            }
+        }
+
+        // ---------------------------------------------------------
+        // UI INTERACTIONS
+        // ---------------------------------------------------------
+
+        // Tab Switcher
+        function switchTab(os) {
+            document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.download-content').forEach(content => content.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(os + '-content').classList.add('active');
+        }
+
+        // Copy Code Function
+        function copyCode(btn) {
+            const code = btn.previousElementSibling.innerText;
+            navigator.clipboard.writeText(code);
+            const originalIcon = btn.innerHTML;
+
+            // Visual feedback
+            btn.innerHTML = '<i data-lucide="check"></i>';
+            btn.style.color = 'var(--accent)';
+
+            lucide.createIcons();
+
+            setTimeout(() => {
+                btn.innerHTML = originalIcon;
+                btn.style.color = ''; // Reset color
+                lucide.createIcons();
+            }, 2000);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            if (window.innerWidth <= 768) {
+                document.getElementById('navLinks').classList.toggle('active');
+            }
+        }
+
+        // Run on Load
+        document.addEventListener("DOMContentLoaded", fetchLatestRelease);
+    </script>
+</body>
+
+</html>
+
+--------------------------------------------------------------------------------
+
