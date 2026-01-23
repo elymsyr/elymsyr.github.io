@@ -808,3 +808,134 @@ footer {
         gap: 1rem;
     }
 }
+/* Roadmap Section */
+.roadmap {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--card-border);
+}
+
+.roadmap-card {
+    background: #100d0c;
+    border: 1px solid var(--card-border);
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Markdown Content Styling */
+.markdown-content {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.markdown-content h1 {
+    display: none; /* Hide main title if redundant with section header */
+}
+
+.markdown-content h2 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(212, 163, 115, 0.1);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.markdown-content h2:first-child {
+    margin-top: 0;
+}
+
+.markdown-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.markdown-content li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Custom bullet points for standard lists */
+.markdown-content li::before {
+    content: '•';
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Checkbox styling (Task Lists) */
+.markdown-content input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.1em;
+    height: 1.1em;
+    border: 1px solid var(--text-muted);
+    background: transparent;
+    margin-right: 0.5rem;
+    position: relative;
+    top: 0.2rem;
+    cursor: default;
+    border-radius: 0; /* Sharp */
+}
+
+.markdown-content input[type="checkbox"]:checked {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.markdown-content input[type="checkbox"]:checked::after {
+    content: '✓';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* Handle task list items specifically */
+.markdown-content li:has(input[type="checkbox"]) {
+    padding-left: 0;
+    list-style: none;
+}
+.markdown-content li:has(input[type="checkbox"])::before {
+    content: none;
+}
+
+.roadmap-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.roadmap-footer a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .roadmap-card {
+        padding: 1.5rem;
+    }
+}
