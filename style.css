@@ -622,10 +622,14 @@ a {
     max-width: 480px;
     border-radius: 0;
     /* Sharp */
-    overflow-x: auto;
-    /* Fixes text overflow */
+    /* overflow-x: auto; - MOVED TO PRE */
     margin-bottom: 0;
     /* Remove excess bottom space */
+}
+
+.code-block pre {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
 }
 
 /* Security Note & Steps */
@@ -714,16 +718,17 @@ a {
 
 .copy-btn {
     position: absolute;
-    bottom: 5px;
+    top: 5px;
     right: 5px;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     border: 1px solid #333;
     color: #666;
     cursor: pointer;
-    padding: 4px;
+    padding: 6px;
     transition: all 0.2s;
     border-radius: 0;
-    /* Sharp */
+    z-index: 10;
 }
 
 .copy-btn:hover {
