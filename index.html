@@ -178,6 +178,9 @@
                         <button class="os-btn" onclick="switchTab('linux')">
                             <i data-lucide="terminal"></i> Linux
                         </button>
+                        <button class="os-btn" onclick="switchTab('macos')">
+                            <i data-lucide="apple"></i> MacOS
+                        </button>
                     </div>
 
                     <div class="os-content-wrapper">
@@ -204,6 +207,14 @@ cd dungeon-master-tool
 bash installer/install.sh</pre>
                                 <button class="copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i></button>
                             </div>
+                        </div>
+
+                        <!-- MACOS TAB -->
+                        <div id="macos-content" class="download-content">
+                            <p class="tab-desc">For Apple Silicon & Intel Macs.</p>
+                            <a id="download-mac-btn" href="#" class="btn btn-primary large">
+                                <i data-lucide="download"></i> Download MacOS .zip
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -262,6 +273,7 @@ bash installer/install.sh</pre>
 
         async function fetchLatestRelease() {
             const winBtn = document.getElementById('download-win-btn');
+            const macBtn = document.getElementById('download-mac-btn');
             const verText = document.getElementById('version-text');
             const badgeText = document.getElementById('hero-badge');
             const linuxCode = document.getElementById('linux-code-text');
@@ -279,29 +291,29 @@ bash installer/install.sh</pre>
                 verText.innerHTML = `${version} • 64-bit`;
                 if (badgeText) badgeText.innerText = `${version} Available`;
 
-                // 3. Find Windows ZIP Asset
-                // 3. Find Windows ZIP Asset
-                const winAsset = data.assets.find(asset =>
-                    asset.name.endsWith('.zip') || asset.name.toLowerCase().includes('windows')
-                );
+                // 3. Find Assets
+                const winAsset = data.assets.find(asset => asset.name === 'DungeonMasterTool-Windows.zip');
+                const macAsset = data.assets.find(asset => asset.name === 'DungeonMasterTool-MacOS.zip');
 
-                let downloadUrl = winAsset ? winAsset.browser_download_url : null;
+                const winBtn = document.getElementById('download-win-btn');
+                const macBtn = document.getElementById('download-mac-btn');
 
-                // Fallback: search in body text if not found in assets
-                if (!downloadUrl && data.body) {
-                    const params = data.body.match(/https:\/\/github\.com\/[\w-]+\/[\w-]+\/releases\/download\/[^\)]+\.zip/);
-                    if (params) {
-                        downloadUrl = params[0];
-                    }
-                }
-
-                if (downloadUrl) {
-                    winBtn.href = downloadUrl;
-                    winBtn.innerHTML = `<i data-lucide="download"></i> Download ${version}`;
+                // Update Windows Button
+                if (winAsset) {
+                    winBtn.href = winAsset.browser_download_url;
+                    winBtn.innerHTML = `<i data-lucide="download"></i> Download Windows ${version}`;
                 } else {
-                    // Fallback if no asset found
                     winBtn.href = data.html_url;
                     winBtn.innerHTML = `<i data-lucide="external-link"></i> Go to Releases`;
+                }
+
+                // Update MacOS Button
+                if (macAsset) {
+                    macBtn.href = macAsset.browser_download_url;
+                    macBtn.innerHTML = `<i data-lucide="download"></i> Download MacOS ${version}`;
+                } else {
+                    macBtn.href = data.html_url;
+                    macBtn.innerHTML = `<i data-lucide="external-link"></i> Go to Releases`;
                 }
 
                 // 4. Update Linux Command to Checkout Specific Version
