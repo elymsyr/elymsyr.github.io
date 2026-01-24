@@ -211,10 +211,53 @@ bash installer/install.sh</pre>
 
                         <!-- MACOS TAB -->
                         <div id="macos-content" class="download-content">
-                            <p class="tab-desc">For Apple Silicon & Intel Macs.</p>
-                            <a id="download-mac-btn" href="#" class="btn btn-primary large">
-                                <i data-lucide="download"></i> Download MacOS .zip
-                            </a>
+                            <div class="security-note">
+                                <h3><i data-lucide="shield-alert"></i> MacOS Installation & Security Note</h3>
+                                <p>Since this is an open-source project and not signed with an official Apple Developer
+                                    account, you need to manually bypass the "unverified developer" warning.</p>
+                            </div>
+
+                            <ul class="steps-list">
+                                <li class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <p>Extract the downloaded .zip file.</p>
+                                    </div>
+                                </li>
+                                <li class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <p>Drag <strong>DungeonMasterTool.app</strong> to your Applications folder.</p>
+                                    </div>
+                                </li>
+                                <li class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <p>Open Terminal (Cmd + Space, type 'Terminal') and run the following command to
+                                            remove the quarantine flag:</p>
+                                        <div class="code-block" style="max-width: 100%;">
+                                            <pre
+                                                style="margin: 0;">sudo xattr -rd com.apple.quarantine /Applications/DungeonMasterTool.app</pre>
+                                            <button class="copy-btn" onclick="copyCode(this)"><i
+                                                    data-lucide="copy"></i></button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="step-item">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <p><strong>Launch:</strong> You can now open the app from your Applications or
+                                            Launchpad.</p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div style="margin-top: 2.5rem; text-align: center; width: 100%;">
+                                <a id="download-mac-btn" href="#" class="btn btn-primary large">
+                                    <i data-lucide="download"></i> Download MacOS .zip
+                                </a>
+                                <p class="tab-desc" style="margin-top: 1rem;">For Apple Silicon & Intel Macs.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -251,7 +294,8 @@ bash installer/install.sh</pre>
                 </a>
                 <p class="footer-desc">Open source tabletop RPG management suite designed for immersive storytelling.
                 </p>
-                <p class="footer-credit">Mage icons created by David Carapinha - Flaticon</p>
+                <p class="footer-credit">M<a href="https://www.flaticon.com/free-icons/sorcery"
+                        title="sorcery icons">Sorcery icons created by David Carapinha - Flaticon</a></p>
             </div>
             <div class="footer-links">
                 <a href="https://github.com/elymsyr/dungeon-master-tool/blob/main/LICENSE">License</a>
