@@ -1138,11 +1138,43 @@ a {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
+.feedback-icon-badge {
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(212, 163, 115, 0.08);
+    border: 1px solid rgba(212, 163, 115, 0.16);
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.feedback-card:hover .feedback-icon-badge {
+    transform: scale(1.05);
+    border-color: rgba(212, 163, 115, 0.3);
+}
+
+.feedback-icon-badge-instagram {
+    background: linear-gradient(145deg, rgba(225, 48, 108, 0.16) 0%, rgba(245, 96, 64, 0.08) 100%);
+    border-color: rgba(225, 48, 108, 0.28);
+}
+
+.feedback-icon-badge-linkedin {
+    background: rgba(10, 102, 194, 0.14);
+    border-color: rgba(10, 102, 194, 0.3);
+}
+
 .feedback-card svg {
     width: 28px;
     height: 28px;
     color: var(--accent);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0;
+}
+
+.feedback-card .feedback-icon-badge-instagram svg,
+.feedback-card .feedback-icon-badge-linkedin svg {
+    color: #fff;
 }
 
 .feedback-card h3 {
