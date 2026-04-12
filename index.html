@@ -45,7 +45,6 @@
                 <a href="#features" onclick="toggleMenu()">Features</a>
                 <a href="#showcase" onclick="toggleMenu()">Gallery</a>
                 <a href="#download" onclick="toggleMenu()">Download</a>
-                <a href="#roadmap" onclick="toggleMenu()">Roadmap</a>
                 <a href="#feedback" onclick="toggleMenu()">Contact</a>
                 <a href="https://github.com/elymsyr/dungeon-master-tool" target="_blank" class="github-link">
                     <i data-lucide="github"></i> GitHub
@@ -379,28 +378,6 @@ cd bundle
         </div>
     </section>
 
-    <!-- Roadmap -->
-    <section id="roadmap" class="roadmap">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Progress</span>
-                <h2>Project <span class="gradient-text">Roadmap</span></h2>
-                <p>Live plans straight from our drawing board.</p>
-            </div>
-
-            <div class="roadmap-card reveal">
-                <div id="roadmap-content" class="markdown-content">
-                    <div class="loading-spinner">Loading Roadmap...</div>
-                </div>
-                <div class="roadmap-footer">
-                    <p>Track progress in real-time on <a
-                            href="https://github.com/elymsyr/dungeon-master-tool/blob/main/TODO.md"
-                            target="_blank">GitHub</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Feedback -->
     <section id="feedback" class="feedback">
         <div class="container">
@@ -625,32 +602,10 @@ cd bundle
             });
         }
 
-        // ---------------------------------------------------------
-        // ROADMAP
-        // ---------------------------------------------------------
-        async function loadRoadmap() {
-            const container = document.getElementById('roadmap-content');
-            try {
-                const response = await fetch('https://raw.githubusercontent.com/elymsyr/dungeon-master-tool/main/TODO.md');
-                if (!response.ok) throw new Error('Failed');
-                const markdown = await response.text();
-                container.innerHTML = marked.parse(markdown);
-            } catch (error) {
-                console.error('Roadmap Error:', error);
-                container.innerHTML = `
-                    <div style="text-align:center;color:var(--text-muted);padding:2rem;">
-                        <p>Could not load roadmap data.</p>
-                        <a href="https://github.com/elymsyr/dungeon-master-tool/blob/main/TODO.md"
-                           class="btn btn-secondary" style="margin-top:1rem;">View on GitHub</a>
-                    </div>`;
-            }
-        }
-
         // Init on DOM load
         document.addEventListener("DOMContentLoaded", () => {
             fetchLatestRelease();
             loadGallery();
-            loadRoadmap();
         });
     </script>
 </body>
