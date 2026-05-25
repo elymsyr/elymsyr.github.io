@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="icon" type="image/png" href="media/icon.png">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=2.1">
+    <link rel="stylesheet" href="style.css?v=2.2">
 
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -35,7 +35,7 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="images/icon.png" alt="DM Tool Logo" class="logo-img">
+                <img src="media/icon.png" alt="DM Tool Logo" class="logo-img">
                 <span>DM Tool</span>
             </a>
             <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -43,6 +43,7 @@
             </button>
             <div class="nav-links" id="navLinks">
                 <a href="#features" onclick="toggleMenu()">Features</a>
+                <a href="#online" onclick="toggleMenu()">Online</a>
                 <a href="#showcase" onclick="toggleMenu()">Gallery</a>
                 <a href="#download" onclick="toggleMenu()">Download</a>
                 <a href="#feedback" onclick="toggleMenu()">Contact</a>
@@ -59,7 +60,7 @@
             <div class="hero-content reveal">
                 <div class="badge" id="hero-badge">
                     <span class="badge-dot"></span>
-                    v2.0.0 Available
+                    v9.1.0-beta Available
                 </div>
                 <h1>Master Your Campaign<br><span class="gradient-text">Like Never Before</span></h1>
                 <p class="hero-subtitle">
@@ -92,11 +93,30 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <img src="images/map.png" alt="Dungeon Master Tool Interface">
+                    <img src="media/map.png" alt="Dungeon Master Tool Interface">
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- Support Bar -->
+    <section class="support-bar">
+        <div class="container support-content">
+            <span class="support-label"><i data-lucide="heart"></i> Support development</span>
+            <div class="support-links">
+                <a href="https://www.patreon.com/elymsyr" target="_blank" rel="noopener" class="support-btn patreon">
+                    <i data-lucide="coffee"></i> Patreon
+                </a>
+                <a href="https://thanks.dev/u/gh/elymsyr" target="_blank" rel="noopener" class="support-btn">
+                    <i data-lucide="github"></i> thanks.dev
+                </a>
+                <a href="https://groupfinder.eu/library/dungeon-master-tool" target="_blank" rel="noopener"
+                    class="support-btn gf">
+                    <img src="media/gf-bar-rw.png" alt="GroupFinder Library">
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Stats Bar -->
     <section class="stats-bar">
@@ -124,10 +144,10 @@
                     </div>
                 </div>
                 <div class="stat-item reveal">
-                    <div class="stat-icon"><i data-lucide="code-2"></i></div>
+                    <div class="stat-icon"><i data-lucide="scroll"></i></div>
                     <div class="stat-info">
-                        <span class="stat-number">MIT</span>
-                        <span class="stat-label">Open Source</span>
+                        <span class="stat-number">CC BY-NC</span>
+                        <span class="stat-label">License</span>
                     </div>
                 </div>
             </div>
@@ -145,39 +165,77 @@
 
             <div class="features-grid">
                 <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="monitor"></i></div>
-                    <h3>Dynamic Projection</h3>
-                    <p>Drag & drop images to project instantly to a second screen. Multi-image split view for NPCs,
-                        maps, and items.</p>
+                    <div class="icon-box"><i data-lucide="swords"></i></div>
+                    <h3>Combat Tracker</h3>
+                    <p>Initiative, HP, conditions, turn management. Every action auto-logs to the session event log
+                        for clean session records.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="cloud-fog"></i></div>
-                    <h3>Fog of War</h3>
-                    <p>Draw fog to hide secrets on the battle map. Left-click adds, right-click erases. State persists
-                        per encounter.</p>
+                    <div class="icon-box"><i data-lucide="map"></i></div>
+                    <h3>Battle Map</h3>
+                    <p>Six-layer canvas — grid, token, annotation, fog, terrain, decal. Draw tool, persistent rulers
+                        and circles, fog of war.</p>
                 </div>
                 <div class="feature-card reveal">
                     <div class="icon-box"><i data-lucide="brain"></i></div>
                     <h3>Mind Map</h3>
-                    <p>Infinite canvas with Level-of-Detail rendering — stays smooth even with dozens of nodes, images,
-                        and workspaces.</p>
+                    <p>Infinite canvas with Bezier connections, nested workspaces, undo/redo. LOD rendering stays
+                        smooth at any scale.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="icon-box"><i data-lucide="database"></i></div>
+                    <h3>Entity System</h3>
+                    <p>Schema-driven cards with 16 field widgets (text, markdown, image, stat block, dice roller).
+                        Templates, packages, full import/export.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="icon-box"><i data-lucide="user-plus"></i></div>
+                    <h3>Character Suite</h3>
+                    <p>SRD-driven creation wizard, level-up planner with pending choices, multiclass with prereq
+                        checks, weapon mastery, spell slots.</p>
                 </div>
                 <div class="feature-card reveal">
                     <div class="icon-box"><i data-lucide="music"></i></div>
-                    <h3>Adaptive Audio</h3>
-                    <p>Layered music system with intensity sliders. Create custom themes and shift ambience dynamically
-                        mid-session.</p>
+                    <h3>Soundpad</h3>
+                    <p>Layered audio with gapless loops and volume fade. Build custom themes, shift ambience
+                        dynamically mid-session.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online & Community -->
+    <section id="online" class="online-community">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Online</span>
+                <h2>Play <span class="gradient-text">Together</span></h2>
+                <p>Closed beta. Sync, publish, follow, find a table.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="icon-box"><i data-lucide="wifi"></i></div>
+                    <h3>Online Play</h3>
+                    <p>Only the DM needs a beta slot — the table joins free. Realtime CDC sync streams character,
+                        entity, and member changes to every connected client. Offline edits reconcile on reconnect.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="swords"></i></div>
-                    <h3>Combat Tracker</h3>
-                    <p>Manage initiative, HP, and conditions. Combat events auto-log to the session event log for
-                        complete records.</p>
+                    <div class="icon-box"><i data-lucide="upload-cloud"></i></div>
+                    <h3>Marketplace</h3>
+                    <p>Publish worlds, templates, packages, characters as immutable snapshots. Versioning with lineage,
+                        atomic download counters, browse by type / language / tags.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="earth"></i></div>
-                    <h3>System Agnostic</h3>
-                    <p>Built-in 5e SRD & Open5e browser, but fully adaptable to any tabletop RPG system you play.</p>
+                    <div class="icon-box"><i data-lucide="users"></i></div>
+                    <h3>Social</h3>
+                    <p>Public profiles with follow system, activity feed (text + image posts, likes),
+                        realtime direct messaging — 1-to-1 and group chats with unread counters.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="icon-box"><i data-lucide="calendar-search"></i></div>
+                    <h3>Game Listings</h3>
+                    <p>Post open games with system, seats, schedule, language, tags. Players apply with a message;
+                        listing owners accept, reject, or applicants withdraw.</p>
                 </div>
             </div>
         </div>
@@ -195,38 +253,36 @@
                 <div class="guide-card reveal">
                     <div class="guide-number">01</div>
                     <div class="guide-content">
-                        <h3><i data-lucide="cast"></i> Project to Players</h3>
-                        <p>Click <strong>"Toggle Player Screen"</strong> to open a second window. Drag any image — NPC
-                            portrait, item card, or map — to the <strong>"Drop to Project"</strong> bar. It appears
-                            instantly on the player-facing screen.</p>
+                        <h3><i data-lucide="swords"></i> Run Combat</h3>
+                        <p>Roll initiative, track <strong>HP</strong> and <strong>conditions</strong>, advance turns
+                            with one tap. Every change writes to the session event log so nothing gets lost.</p>
                     </div>
                 </div>
                 <div class="guide-card reveal">
                     <div class="guide-number">02</div>
                     <div class="guide-content">
                         <h3><i data-lucide="map"></i> Battle Map Toolkit</h3>
-                        <p>Load a map and use four tool groups: <strong>Navigate</strong> to pan,
-                            <strong>Ruler/Circle</strong> for measurements in feet, <strong>Draw</strong> for
-                            annotations, and <strong>Fog</strong> to reveal or hide areas. Everything syncs to the
-                            player screen in real-time.</p>
+                        <p>Six-layer canvas with <strong>Navigate</strong>, <strong>Ruler / Circle</strong>,
+                            <strong>Draw</strong>, <strong>Fog</strong>, terrain and decals. Rulers and circles persist;
+                            fog syncs to projected and online views.</p>
                     </div>
                 </div>
                 <div class="guide-card reveal">
                     <div class="guide-number">03</div>
                     <div class="guide-content">
-                        <h3><i data-lucide="network"></i> Mind Map Canvas</h3>
-                        <p>Right-click to add <strong>Notes</strong>, <strong>Images</strong>, or
-                            <strong>Workspaces</strong>. Middle-click to pan. Zoom freely — the LOD system keeps
-                            everything smooth no matter how complex your world gets.</p>
+                        <h3><i data-lucide="cast"></i> Project to Players</h3>
+                        <p>Three ways: <strong>same device</strong> pop-out window, <strong>different device</strong>
+                            cast to a tablet, or <strong>online players</strong> — every connected app mirrors the active
+                            view via per-world manifest replay.</p>
                     </div>
                 </div>
                 <div class="guide-card reveal">
                     <div class="guide-number">04</div>
                     <div class="guide-content">
-                        <h3><i data-lucide="volume-2"></i> Soundpad</h3>
-                        <p>Open the audio panel, pick a theme (e.g., "Forest", "Tavern"), and use the <strong>Intensity
-                                Slider</strong> to dynamically shift the music. Build custom themes with layered tracks.
-                        </p>
+                        <h3><i data-lucide="globe-2"></i> Worldbuild</h3>
+                        <p>Mind map for ideas, <strong>World Map</strong> with pins and fog of war, <strong>Era
+                                Timeline</strong> for history, and schema-driven <strong>Entity</strong> templates.
+                            Works fully offline.</p>
                     </div>
                 </div>
             </div>
@@ -445,23 +501,29 @@ cd bundle
                     <h3>LinkedIn</h3>
                     <p>Orhun Eren Yalcinkaya</p>
                 </a>
-                <a href="mailto:orhunerenyalcinkaya@gmail.com" class="feedback-card">
+                <a href="mailto:orhun868@gmail.com" class="feedback-card">
                     <span class="feedback-icon-badge">
                         <i data-lucide="mail"></i>
                     </span>
                     <h3>Email</h3>
-                    <p>orhunerenyalcinkaya@gmail.com</p>
+                    <p>orhun868@gmail.com</p>
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)" aria-hidden="true">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+        <img class="lightbox-img" alt="">
+    </div>
 
     <!-- Footer -->
     <footer>
         <div class="container footer-container">
             <div class="footer-left">
                 <a href="#" class="footer-brand">
-                    <img src="images/icon.png" alt="DM Tool Logo" class="footer-logo-img">
+                    <img src="media/icon.png" alt="DM Tool Logo" class="footer-logo-img">
                     <span>Dungeon Master Tool</span>
                 </a>
                 <p class="footer-desc">Open source tabletop RPG management suite built with Flutter. Designed for
@@ -478,7 +540,7 @@ cd bundle
                     <h4>Project</h4>
                     <a href="https://github.com/elymsyr/dungeon-master-tool" target="_blank">GitHub Repository</a>
                     <a href="https://github.com/elymsyr/dungeon-master-tool/blob/main/LICENSE"
-                        target="_blank">License (MIT)</a>
+                        target="_blank">License (CC BY-NC 4.0)</a>
                     <a href="https://github.com/elymsyr/dungeon-master-tool/issues" target="_blank">Report Issue</a>
                 </div>
                 <div class="footer-link-group">
@@ -625,29 +687,88 @@ cd bundle
             if (!galleryGrid) return;
 
             const imageList = [
-                { file: "char.png", caption: "Characters", wide: true },
-                { file: "map.png", caption: "Map", wide: true },
-                { file: "settings.png", caption: "Campaign View", wide: true },
-                { file: "db.png", caption: "World Database", wide: true },
-                { file: "world.png", caption: "World", wide: true },
-                { file: "session.png", caption: "Session", wide: true },
-                { file: "social.png", caption: "Social", wide: true },
-                { file: "pack.png", caption: "Packages", wide: true },
+                { file: "char.png", caption: "Characters" },
+                { file: "map.png", caption: "Map" },
+                { file: "settings.png", caption: "Campaign View" },
+                { file: "db.png", caption: "World Database" },
+                { file: "world.png", caption: "World" },
+                { file: "session.png", caption: "Session" },
+                { file: "social.png", caption: "Social" },
+                { file: "pack.png", caption: "Packages" },
             ];
 
             galleryGrid.innerHTML = '';
 
             imageList.forEach(img => {
                 const item = document.createElement('div');
-                item.className = `gallery-item${img.wide ? ' gallery-wide' : ''} reveal`;
+                item.className = 'gallery-item reveal';
                 item.innerHTML = `
-                    <img src="images/${img.file}" alt="${img.caption}" loading="lazy">
+                    <img src="media/${img.file}" alt="${img.caption}" loading="lazy">
                     <div class="caption">${img.caption}</div>
                 `;
+                item.addEventListener('click', () => openLightbox(`media/${img.file}`, img.caption));
                 galleryGrid.appendChild(item);
                 revealObserver.observe(item);
             });
         }
+
+        // ---------------------------------------------------------
+        // LIGHTBOX
+        // ---------------------------------------------------------
+        function openLightbox(src, alt) {
+            const lb = document.getElementById('lightbox');
+            const img = lb.querySelector('.lightbox-img');
+            img.src = src;
+            img.alt = alt || '';
+            lb.classList.add('active');
+            lb.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('lightbox-open');
+        }
+
+        function closeLightbox(e) {
+            if (e && e.target.classList && e.target.classList.contains('lightbox-img')) return;
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+            lb.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('lightbox-open');
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ---------------------------------------------------------
+        // ANCHOR SCROLL — wait for lazy-loaded gallery images so
+        // target offset is stable before scrolling.
+        // ---------------------------------------------------------
+        function scrollToAnchor(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const pending = [...document.querySelectorAll('.gallery-grid img')]
+                .filter(i => !i.complete);
+            const go = () => el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (pending.length === 0) {
+                requestAnimationFrame(go);
+                return;
+            }
+            Promise.all(pending.map(i => new Promise(res => {
+                i.addEventListener('load', res, { once: true });
+                i.addEventListener('error', res, { once: true });
+            }))).then(() => requestAnimationFrame(go));
+        }
+
+        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(a => {
+            a.addEventListener('click', e => {
+                const id = a.getAttribute('href').slice(1);
+                const el = document.getElementById(id);
+                if (!el) return;
+                e.preventDefault();
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+                scrollToAnchor(id);
+            });
+        });
 
         // Init on DOM load
         document.addEventListener("DOMContentLoaded", () => {

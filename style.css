@@ -673,31 +673,24 @@ a {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
     max-width: 1100px;
     margin: 0 auto;
 }
 
 .gallery-item {
-    border: 1px solid var(--card-border);
+    border: none;
     background: #000;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    cursor: zoom-in;
 }
 
 .gallery-item.gallery-wide {
-    grid-column: span 2;
+    grid-column: auto;
 }
 
-.gallery-item::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    pointer-events: none;
-    z-index: 2;
-}
+.gallery-item::after { display: none; }
 
 .gallery-item img {
     width: 100%;
@@ -1475,3 +1468,157 @@ footer {
         justify-content: center;
     }
 }
+
+/* ===== SUPPORT BAR ===== */
+.support-bar {
+    padding: 1.5rem 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.support-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.support-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+}
+
+.support-label svg {
+    width: 14px;
+    height: 14px;
+    color: var(--primary-hover);
+}
+
+.support-links {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.support-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-color);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+}
+
+.support-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.support-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.support-btn.patreon:hover {
+    border-color: #f96854;
+    color: #ff8a78;
+}
+
+.support-btn.gf {
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.support-btn.gf img {
+    height: 32px;
+    display: block;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.support-btn.gf:hover img {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+/* ===== ONLINE & COMMUNITY ===== */
+.online-community {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--card-border);
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    cursor: zoom-out;
+    padding: 2rem;
+    animation: lightboxFade 0.25s ease;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+@keyframes lightboxFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.lightbox-img {
+    max-width: 95vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    cursor: default;
+    border: 1px solid rgba(212, 163, 115, 0.2);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem 0.75rem;
+    transition: color 0.2s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--accent);
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+/* Gallery responsive — already covered by 968 breakpoint above:
+   .gallery-grid grid-template-columns: 1fr stacks on mobile */
