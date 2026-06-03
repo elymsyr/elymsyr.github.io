@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Confirm email · Dungeon Master Tool</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: #0f0e17; color: #fff;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 24px;
+    }
+    .card {
+      width: 100%; max-width: 440px; background: #1a1825; border: 1px solid #2a2740;
+      border-radius: 16px; padding: 40px 36px; text-align: center;
+    }
+    .crest { font-size: 38px; line-height: 1; }
+    h1 { margin: 14px 0 0; font-size: 20px; letter-spacing: .5px; color: #f5d49b; }
+    .status { margin: 22px 0 6px; font-size: 19px; font-weight: 600; }
+    p { margin: 8px 0 0; color: #b6b2c9; font-size: 15px; line-height: 1.6; }
+    .spinner {
+      width: 34px; height: 34px; margin: 8px auto 0; border-radius: 50%;
+      border: 3px solid #2a2740; border-top-color: #7b5cff; animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .ok { color: #6ee7a8; } .err { color: #ff8b8b; }
+    .hint { margin-top: 20px; color: #7d7a91; font-size: 13px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="crest">&#9876;&#65039;</div>
+    <h1>Dungeon Master Tool</h1>
+
+    <div id="loading">
+      <div class="spinner"></div>
+      <div class="status">Confirming your email…</div>
+    </div>
+
+    <div id="success" class="hidden">
+      <div class="status ok">Email confirmed</div>
+      <p>Your account is ready. Open the Dungeon Master Tool app and sign in with your email and password.</p>
+      <p class="hint">You can close this tab.</p>
+    </div>
+
+    <div id="error" class="hidden">
+      <div class="status err">Confirmation failed</div>
+      <p id="errmsg">This link is invalid or has expired.</p>
+      <p class="hint">Request a new confirmation email from the app's sign-in screen, then try again.</p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+    // Public values — the anon key is safe to expose (Row Level Security protects data).
+    // Fill these with the same SUPABASE_URL / SUPABASE_ANON_KEY the app is built with.
+    const SUPABASE_URL = '__SUPABASE_URL__';
+    const SUPABASE_ANON_KEY = '__SUPABASE_ANON_KEY__';
+
+    const show = (id) => {
+      for (const el of document.querySelectorAll('.card > div:not(.crest)')) {
+        if (el.id) el.classList.add('hidden');
+      }
+      document.getElementById(id).classList.remove('hidden');
+    };
+
+    (async () => {
+      const params = new URLSearchParams(window.location.search);
+      const token_hash = params.get('token_hash');
+      const type = params.get('type') || 'email';
+
+      if (!token_hash) {
+        document.getElementById('errmsg').textContent = 'Missing confirmation token.';
+        show('error');
+        return;
+      }
+
+      try {
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const { error } = await supabase.auth.verifyOtp({ type, token_hash });
+        if (error) {
+          document.getElementById('errmsg').textContent = error.message;
+          show('error');
+          return;
+        }
+        // Don't leave a lingering browser session; the user signs in from the app.
+        await supabase.auth.signOut();
+        show('success');
+      } catch (e) {
+        document.getElementById('errmsg').textContent = String(e?.message || e);
+        show('error');
+      }
+    })();
+  </script>
+</body>
+</html>
