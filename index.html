@@ -4,49 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dungeon Master Tool - Cross-Platform Offline TTRPG Assistant</title>
+    <title>Dungeon Master Tool — Free, offline-first DM app for Android, iOS, Windows, Linux & macOS</title>
     <meta name="description"
-        content="A portable, offline-first DM tool built with Flutter. Manage combat, track timelines, and project a rich campaign wiki seamlessly across Android, iOS, Windows, Linux, and macOS.">
+        content="Dungeon Master Tool is a free, offline-first app for building worlds, running combats and sessions, and playing together — on Android, iOS, Windows, Linux and macOS. No account needed to start.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Marcellus&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/png" href="media/icon.png">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=2.2">
+    <link rel="stylesheet" href="style.css?v=3.3">
 
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Markdown Parser -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-glow bg-glow-3"></div>
+    <div class="grain"></div>
+    <div class="candle-glow"></div>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">
+            <a href="#top" class="logo">
                 <img src="media/icon.png" alt="DM Tool Logo" class="logo-img">
-                <span>DM Tool</span>
+                <span>Dungeon Master Tool</span>
             </a>
             <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i data-lucide="menu"></i>
             </button>
             <div class="nav-links" id="navLinks">
-                <a href="#features" onclick="toggleMenu()">Features</a>
-                <a href="#online" onclick="toggleMenu()">Online</a>
-                <a href="#showcase" onclick="toggleMenu()">Gallery</a>
-                <a href="#download" onclick="toggleMenu()">Download</a>
-                <a href="#feedback" onclick="toggleMenu()">Contact</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle" onclick="toggleDropdown(event)">
+                        Explore <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#features">Features</a>
+                        <a href="#screens">Second Screen</a>
+                        <a href="#sync">Local sync</a>
+                        <a href="#showcase">Screenshots</a>
+                    </div>
+                </div>
+                <a href="#download">Download</a>
+                <a href="#feedback">Contact</a>
                 <a href="https://github.com/elymsyr/dungeon-master-tool" target="_blank" class="github-link">
                     <i data-lucide="github"></i> GitHub
                 </a>
@@ -55,28 +59,29 @@
     </nav>
 
     <!-- Hero -->
-    <header class="hero">
+    <header class="hero" id="top">
         <div class="container hero-container">
             <div class="hero-content reveal">
                 <div class="badge" id="hero-badge">
                     <span class="badge-dot"></span>
-                    v9.1.0-beta Available
+                    <span>beta — free, no account needed</span>
                 </div>
-                <h1>Master Your Campaign<br><span class="gradient-text">Like Never Before</span></h1>
+                <h1>Run the table,<br>not the paperwork.</h1>
                 <p class="hero-subtitle">
-                    A portable, offline-first DM tool built with Flutter. Manage combat, track timelines,
-                    and project a rich campaign wiki seamlessly — on any device.
+                    Dungeon Master Tool is a free, offline-first app for building worlds, running combats and sessions,
+                    and playing together across five platforms. Everything runs on your device — online is an option,
+                    not a gate.
                 </p>
                 <div class="hero-actions">
                     <a href="#download" class="btn btn-primary">
-                        <i data-lucide="download"></i> Download Free
+                        <i data-lucide="download"></i> Download free
                     </a>
                     <a href="#features" class="btn btn-secondary">
-                        <i data-lucide="compass"></i> Explore Features
+                        <i data-lucide="compass"></i> What's inside
                     </a>
                 </div>
                 <div class="hero-platforms">
-                    <span class="platform-label">Available on</span>
+                    <span class="platform-label">Runs on</span>
                     <div class="platform-icons">
                         <span class="platform-tag"><i data-lucide="smartphone"></i> Android</span>
                         <span class="platform-tag"><i data-lucide="smartphone"></i> iOS</span>
@@ -86,14 +91,19 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-image reveal">
+            <div class="hero-visual reveal">
                 <div class="window-frame">
                     <div class="window-header">
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <img src="media/map.png" alt="Dungeon Master Tool Interface">
+                    <img src="media/map.png" alt="Dungeon Master Tool interface with a world map">
+                </div>
+                <div class="field-note">
+                    <p class="field-note-title">Session 14 · The Drowned Keep</p>
+                    <p class="field-note-text">a three ring binder, one lined paper and the tool</p>
+                    <span class="field-note-tag">offline ✓</span>
                 </div>
             </div>
         </div>
@@ -102,7 +112,7 @@
     <!-- Support Bar -->
     <section class="support-bar">
         <div class="container support-content">
-            <span class="support-label"><i data-lucide="heart"></i> Support development</span>
+            <span class="support-label"><i data-lucide="coffee"></i> Support development</span>
             <div class="support-links">
                 <a href="https://www.patreon.com/elymsyr" target="_blank" rel="noopener" class="support-btn patreon">
                     <i data-lucide="coffee"></i> Patreon
@@ -122,33 +132,21 @@
     <section class="stats-bar">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <div class="stat-icon"><i data-lucide="layers"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-number">5</span>
-                        <span class="stat-label">Platforms</span>
-                    </div>
+                <div class="stat-item">
+                    <span class="stat-num">5</span>
+                    <span class="stat-label">Platforms</span>
                 </div>
-                <div class="stat-item reveal">
-                    <div class="stat-icon"><i data-lucide="globe"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-number">4</span>
-                        <span class="stat-label">Languages</span>
-                    </div>
+                <div class="stat-item">
+                    <span class="stat-num">4</span>
+                    <span class="stat-label">Languages</span>
                 </div>
-                <div class="stat-item reveal">
-                    <div class="stat-icon"><i data-lucide="wifi-off"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-number">Online</span>
-                        <span class="stat-label">Offline</span>
-                    </div>
+                <div class="stat-item">
+                    <span class="stat-num"><img src="media/gp.png" alt="Free" class="stat-gp">0</span>
+                    <span class="stat-label">Forever — no tiers</span>
                 </div>
-                <div class="stat-item reveal">
-                    <div class="stat-icon"><i data-lucide="scroll"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-number">CC BY-NC</span>
-                        <span class="stat-label">License</span>
-                    </div>
+                <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Works offline</span>
                 </div>
             </div>
         </div>
@@ -157,132 +155,211 @@
     <!-- Features -->
     <section id="features" class="features">
         <div class="container">
+
             <div class="section-header reveal">
-                <span class="section-tag">Capabilities</span>
-                <h2>Forged for <span class="gradient-text">Storytellers</span></h2>
-                <p>Everything you need to run immersive sessions, right at your fingertips.</p>
+                <p class="section-kicker"><span class="kicker-num">01</span> The tools</p>
+                <h2>Everything the table needs</h2>
+                <p class="section-lead">Worldbuilding, dungeon mastering and player tools in one free app — fully
+                    offline, no account to start.</p>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="swords"></i></div>
-                    <h3>Combat Tracker</h3>
-                    <p>Initiative, HP, conditions, turn management. Every action auto-logs to the session event log
-                        for clean session records.</p>
+            <div class="feature-group reveal">
+                <div class="group-title"><span class="group-label">Worldbuilding</span></div>
+                <div class="ledger-grid">
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="network"></i></div>
+                        <h3>Mind Map</h3>
+                        <p>An infinite canvas for the ideas you haven't organised yet — factions, pantheons, plot
+                            hooks. Bezier links, nested workspaces, undo/redo.</p>
+                    </article>
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="map"></i></div>
+                        <h3>World Map & Eras</h3>
+                        <p>Drop pins on a map image and link them to entities, sessions and events. Every era gets its
+                            own map and timeline, and you can hide the parts of the world the party hasn't reached.</p>
+                    </article>
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="package"></i></div>
+                        <h3>Packages</h3>
+                        <p>Content as one-tap bundles: spell packs, monster lists, treasure sets, whole modules. Import
+                            them into any world, export your own, share them on the marketplace.</p>
+                    </article>
                 </div>
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="map"></i></div>
-                    <h3>Battle Map</h3>
-                    <p>Six-layer canvas — grid, token, annotation, fog, terrain, decal. Draw tool, persistent rulers
-                        and circles, fog of war.</p>
+            </div>
+
+            <div class="feature-group reveal">
+                <div class="group-title"><span class="group-label">Dungeon Mastering</span></div>
+                <div class="ledger-grid">
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="swords"></i></div>
+                        <h3>Combat & Battle Maps</h3>
+                        <p>Run initiative, HP, conditions and turn order on a six-layer canvas — grid, tokens, fog,
+                            terrain, decals — with persistent rulers and AoE templates. Every action lands in the
+                            session log.</p>
+                    </article>
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="book-open"></i></div>
+                        <h3>Sessions & Campaigns</h3>
+                        <p>Each world keeps its sessions: notes, timeline events and encounters that survive between
+                            games. Pick up exactly where you stopped.</p>
+                    </article>
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="music"></i></div>
+                        <h3>Soundpad</h3>
+                        <p>Layered ambient audio with gapless loops and fades. Build a theme for the tavern and one for
+                            the dungeon, then crossfade mid-scene.</p>
+                    </article>
                 </div>
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="brain"></i></div>
-                    <h3>Mind Map</h3>
-                    <p>Infinite canvas with Bezier connections, nested workspaces, undo/redo. LOD rendering stays
-                        smooth at any scale.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="database"></i></div>
-                    <h3>Entity System</h3>
-                    <p>Schema-driven cards with 16 field widgets (text, markdown, image, stat block, dice roller).
-                        Templates, packages, full import/export.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="user-plus"></i></div>
-                    <h3>Character Suite</h3>
-                    <p>SRD-driven creation wizard, level-up planner with pending choices, multiclass with prereq
-                        checks, weapon mastery, spell slots.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="music"></i></div>
-                    <h3>Soundpad</h3>
-                    <p>Layered audio with gapless loops and volume fade. Build custom themes, shift ambience
-                        dynamically mid-session.</p>
+            </div>
+
+            <div class="feature-group reveal">
+                <div class="group-title"><span class="group-label">Players</span></div>
+                <div class="ledger-grid">
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="user-plus"></i></div>
+                        <h3>Character Creation</h3>
+                        <p>A wizard that walks you through species, class, background, ability scores and gear. SRD
+                            content built in, Open5e packs to extend it.</p>
+                    </article>
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="wifi"></i></div>
+                        <h3>Online Play</h3>
+                        <p>Join the DM's world, claim a character and play. Only the DM needs a beta slot — the rest of
+                            the table joins free.</p>
+                    </article>
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="sticky-note"></i></div>
+                        <h3>Personal Notes</h3>
+                        <p>A private notes field on every character and entity — backstory, plans, reminders. It stays
+                            with your world and syncs to your devices.</p>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Online & Community -->
-    <section id="online" class="online-community">
+    <!-- Second Screen -->
+    <section id="screens" class="screens">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">Online</span>
-                <h2>Play <span class="gradient-text">Together</span></h2>
-                <p>Closed beta. Sync, publish, follow, find a table.</p>
+                <p class="section-kicker"><span class="kicker-num">★</span> Second Screen</p>
+                <h2>One world, every screen at the table</h2>
+                <p class="section-lead">Push battle maps, images, entity cards and PDFs to a pop-out window, an external
+                    display, or every connected player's app. You decide exactly what the table sees — and when.</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="wifi"></i></div>
-                    <h3>Online Play</h3>
-                    <p>Only the DM needs a beta slot — the table joins free. Realtime CDC sync streams character,
-                        entity, and member changes to every connected client. Offline edits reconcile on reconnect.</p>
+
+            <div class="ways-grid reveal">
+                <div class="way-item">
+                    <span class="way-icon"><i data-lucide="external-link"></i></span>
+                    <h4>Pop-out window</h4>
+                    <p>Send the view to a second window on the DM's desktop — its own monitor, free to pan and zoom
+                        without touching your work.</p>
                 </div>
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="upload-cloud"></i></div>
-                    <h3>Marketplace</h3>
-                    <p>Publish worlds, templates, packages, characters as immutable snapshots. Versioning with lineage,
-                        atomic download counters, browse by type / language / tags.</p>
+                <div class="way-item">
+                    <span class="way-icon"><i data-lucide="tv"></i></span>
+                    <h4>External display</h4>
+                    <p>Cast the projection to a TV or monitor in the room, so the table gets a screen of its own.</p>
                 </div>
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="users"></i></div>
-                    <h3>Social</h3>
-                    <p>Public profiles with follow system, activity feed (text + image posts, likes),
-                        realtime direct messaging — 1-to-1 and group chats with unread counters.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="icon-box"><i data-lucide="calendar-search"></i></div>
-                    <h3>Game Listings</h3>
-                    <p>Post open games with system, seats, schedule, language, tags. Players apply with a message;
-                        listing owners accept, reject, or applicants withdraw.</p>
+                <div class="way-item">
+                    <span class="way-icon"><i data-lucide="users"></i></span>
+                    <h4>Player apps</h4>
+                    <p>Push the same projection to every connected player's app — at the table or across the world.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="guide" class="guide">
+    <!-- Local Sync highlight -->
+    <section id="sync" class="sync-band">
+        <div class="container">
+            <div class="sync-panel reveal">
+                <div class="sync-copy">
+                    <p class="section-kicker"><span class="kicker-num">★</span> Local sync — the one people ask about</p>
+                    <h2>Your world moves with you.<br>Your table stays yours.</h2>
+                    <p class="section-lead">
+                        Move worlds, packages and characters between your own devices over Wi-Fi — no internet, no
+                        account, nothing uploaded. Pair with a QR code or IP + PIN, and the transfer happens directly
+                        between your machines.
+                    </p>
+                </div>
+                <div class="sync-notes">
+                    <div class="sync-note">
+                        <span class="sync-note-icon"><i data-lucide="radio"></i></span>
+                        <div>
+                            <h4>Pair once, sync often</h4>
+                            <p>Wi-Fi pairing by QR or IP + PIN between any of your devices.</p>
+                        </div>
+                    </div>
+                    <div class="sync-note">
+                        <span class="sync-note-icon"><i data-lucide="shield-off"></i></span>
+                        <div>
+                            <h4>Stays on your network</h4>
+                            <p>Nothing is uploaded — the data travels between your own devices.</p>
+                        </div>
+                    </div>
+                    <div class="sync-note">
+                        <span class="sync-note-icon"><i data-lucide="folder-sync"></i></span>
+                        <div>
+                            <h4>The whole campaign moves</h4>
+                            <p>Worlds, packages and characters — everything you build travels between your devices over
+                                Wi-Fi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillars -->
+    <section class="pillars">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">How It Works</span>
-                <h2>Core <span class="gradient-text">Features</span></h2>
-                <p>Quick guide to the most powerful tools at your disposal.</p>
+                <p class="section-kicker"><span class="kicker-num">02</span> The quiet stuff</p>
+                <h2>The details that matter in year two</h2>
+                <p class="section-lead">No flashy features — just the decisions that decide whether you keep using a
+                    tool.</p>
             </div>
-            <div class="guide-grid">
-                <div class="guide-card reveal">
-                    <div class="guide-number">01</div>
-                    <div class="guide-content">
-                        <h3><i data-lucide="swords"></i> Run Combat</h3>
-                        <p>Roll initiative, track <strong>HP</strong> and <strong>conditions</strong>, advance turns
-                            with one tap. Every change writes to the session event log so nothing gets lost.</p>
+            <div class="pillars-grid reveal">
+                <div class="pillar-item">
+                    <span class="pillar-icon"><i data-lucide="wifi-off"></i></span>
+                    <div>
+                        <h4>Offline-first</h4>
+                        <p>Run the whole app without an account. Online is an option, not a gate.</p>
                     </div>
                 </div>
-                <div class="guide-card reveal">
-                    <div class="guide-number">02</div>
-                    <div class="guide-content">
-                        <h3><i data-lucide="map"></i> Battle Map Toolkit</h3>
-                        <p>Six-layer canvas with <strong>Navigate</strong>, <strong>Ruler / Circle</strong>,
-                            <strong>Draw</strong>, <strong>Fog</strong>, terrain and decals. Rulers and circles persist;
-                            fog syncs to projected and online views.</p>
+                <div class="pillar-item">
+                    <span class="pillar-icon"><i data-lucide="share-2"></i></span>
+                    <div>
+                        <h4>Share a world</h4>
+                        <p>Publish a world and players join with a revocable invite code.</p>
                     </div>
                 </div>
-                <div class="guide-card reveal">
-                    <div class="guide-number">03</div>
-                    <div class="guide-content">
-                        <h3><i data-lucide="cast"></i> Project to Players</h3>
-                        <p>Three ways: <strong>same device</strong> pop-out window, <strong>different device</strong>
-                            cast to a tablet, or <strong>online players</strong> — every connected app mirrors the active
-                            view via per-world manifest replay.</p>
+                <div class="pillar-item">
+                    <span class="pillar-icon"><i data-lucide="store"></i></span>
+                    <div>
+                        <h4>Marketplace & social</h4>
+                        <p>Publish worlds, packs and characters as versioned snapshots; profiles, feeds and group chat.</p>
                     </div>
                 </div>
-                <div class="guide-card reveal">
-                    <div class="guide-number">04</div>
-                    <div class="guide-content">
-                        <h3><i data-lucide="globe-2"></i> Worldbuild</h3>
-                        <p>Mind map for ideas, <strong>World Map</strong> with pins and fog of war, <strong>Era
-                                Timeline</strong> for history, and schema-driven <strong>Entity</strong> templates.
-                            Works fully offline.</p>
+                <div class="pillar-item">
+                    <span class="pillar-icon"><i data-lucide="monitor-smartphone"></i></span>
+                    <div>
+                        <h4>Cross-play</h4>
+                        <p>One world, five platforms at the same table — Android, iOS, Windows, Linux, macOS.</p>
+                    </div>
+                </div>
+                <div class="pillar-item">
+                    <span class="pillar-icon"><i data-lucide="languages"></i></span>
+                    <div>
+                        <h4>4 languages</h4>
+                        <p>Interface, help and content in EN, TR, DE and FR.</p>
+                    </div>
+                </div>
+                <div class="pillar-item">
+                    <span class="pillar-icon"><i data-lucide="gift"></i></span>
+                    <div>
+                        <h4>Free, always</h4>
+                        <p>No premium tier, no subscriptions. The SRD 5.2.1 and CC-licensed packs ship with the app.</p>
                     </div>
                 </div>
             </div>
@@ -293,15 +370,12 @@
     <section id="showcase" class="showcase">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">Screenshots</span>
-                <h2>Visual <span class="gradient-text">Showcase</span></h2>
-                <p>A peek into the toolkit.</p>
+                <p class="section-kicker"><span class="kicker-num">03</span> Screenshots</p>
+                <h2>Straight from the app</h2>
+                <p class="section-lead">No mockups — real screens from the running build.</p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item"
-                    style="height:300px;display:flex;align-items:center;justify-content:center;background:#111;">
-                    <span style="color:var(--text-muted);">Loading Gallery...</span>
-                </div>
+                <div class="gallery-placeholder" id="gallery-placeholder">Loading gallery…</div>
             </div>
         </div>
     </section>
@@ -310,9 +384,9 @@
     <section id="download" class="download">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">Get Started</span>
-                <h2>Start Your <span class="gradient-text">Adventure</span></h2>
-                <p>Free and open source. Download for your platform.</p>
+                <p class="section-kicker"><span class="kicker-num">04</span> Get started</p>
+                <h2>Download the build</h2>
+                <p class="section-lead">Free and open source. Pick your platform.</p>
             </div>
 
             <div class="download-card reveal">
@@ -349,7 +423,7 @@
                             <a id="download-android-btn" href="#" class="btn btn-primary large">
                                 <i data-lucide="download"></i> Download APK
                             </a>
-                            <span id="version-text" class="version-info">Loading version...</span>
+                            <span id="version-text" class="version-info">Loading version…</span>
                             <p class="tab-note">You may need to enable "Install from unknown sources" in device
                                 settings.</p>
                         </div>
@@ -359,9 +433,9 @@
                             <div class="download-icon"><i data-lucide="smartphone"></i></div>
                             <h3>iOS</h3>
                             <div class="security-note">
-                                <h4><i data-lucide="shield-alert"></i> Sideload Required</h4>
-                                <p>iOS builds are currently unsigned. You'll need Xcode, AltStore, or a similar
-                                    signing tool to install the app.</p>
+                                <h4><i data-lucide="shield-alert"></i> Sideload required</h4>
+                                <p>iOS builds are currently unsigned. You'll need Xcode, AltStore, or a similar signing
+                                    tool to install the app.</p>
                             </div>
                             <ul class="steps-list">
                                 <li class="step-item">
@@ -420,7 +494,7 @@ cd bundle
                             <div class="download-icon"><i data-lucide="laptop"></i></div>
                             <h3>macOS</h3>
                             <div class="security-note">
-                                <h4><i data-lucide="shield-alert"></i> Security Note</h4>
+                                <h4><i data-lucide="shield-alert"></i> Security note</h4>
                                 <p>This app is not signed with an Apple Developer account. You'll need to remove the
                                     quarantine flag after installing.</p>
                             </div>
@@ -475,16 +549,16 @@ cd bundle
     <section id="feedback" class="feedback">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">Get in Touch</span>
-                <h2>Feedback & <span class="gradient-text">Contact</span></h2>
-                <p>I read every piece of feedback. Bug report or feature request — reach out!</p>
+                <p class="section-kicker"><span class="kicker-num">05</span> Get in touch</p>
+                <h2>Found a bug? Have an idea?</h2>
+                <p class="section-lead">I read every piece of feedback — bug report or feature request, reach out.</p>
             </div>
             <div class="feedback-grid reveal">
                 <a href="https://github.com/elymsyr/dungeon-master-tool/issues" target="_blank" class="feedback-card">
                     <span class="feedback-icon-badge">
                         <i data-lucide="bug"></i>
                     </span>
-                    <h3>Report a Bug</h3>
+                    <h3>Report a bug</h3>
                     <p>GitHub Issues</p>
                 </a>
                 <a href="https://www.instagram.com/erenorhun" target="_blank" class="feedback-card">
@@ -522,31 +596,31 @@ cd bundle
     <footer>
         <div class="container footer-container">
             <div class="footer-left">
-                <a href="#" class="footer-brand">
+                <a href="#top" class="footer-brand">
                     <img src="media/icon.png" alt="DM Tool Logo" class="footer-logo-img">
                     <span>Dungeon Master Tool</span>
                 </a>
-                <p class="footer-desc">Open source tabletop RPG management suite built with Flutter. Designed for
-                    immersive storytelling.</p>
+                <p class="footer-desc">A free, offline-first app for running tabletop RPG sessions. Built with Flutter,
+                    built around your table.</p>
                 <div class="footer-langs">
                     <span title="English">EN</span>
-                    <span title="Turkce">TR</span>
+                    <span title="Türkçe">TR</span>
                     <span title="Deutsch">DE</span>
-                    <span title="Francais">FR</span>
+                    <span title="Français">FR</span>
                 </div>
             </div>
             <div class="footer-right">
                 <div class="footer-link-group">
                     <h4>Project</h4>
-                    <a href="https://github.com/elymsyr/dungeon-master-tool" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/elymsyr/dungeon-master-tool" target="_blank">GitHub repository</a>
                     <a href="https://github.com/elymsyr/dungeon-master-tool/blob/main/LICENSE"
                         target="_blank">License (CC BY-NC 4.0)</a>
-                    <a href="https://github.com/elymsyr/dungeon-master-tool/issues" target="_blank">Report Issue</a>
+                    <a href="https://github.com/elymsyr/dungeon-master-tool/issues" target="_blank">Report an issue</a>
                 </div>
                 <div class="footer-link-group">
                     <h4>Resources</h4>
                     <a href="https://github.com/elymsyr/dungeon-master-tool/tree/main/flutter_app"
-                        target="_blank">Developer Docs</a>
+                        target="_blank">Developer docs</a>
                 </div>
             </div>
         </div>
@@ -558,24 +632,70 @@ cd bundle
     </footer>
 
     <script>
-        // Init Lucide Icons
+        // ---------------------------------------------------------
+        // INIT ICONS
+        // ---------------------------------------------------------
         lucide.createIcons();
 
         // ---------------------------------------------------------
-        // SCROLL REVEAL (Intersection Observer)
+        // MOBILE MENU
+        // ---------------------------------------------------------
+        function toggleMenu() {
+            if (window.innerWidth <= 968) {
+                document.getElementById('navLinks').classList.toggle('active');
+            }
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const dropdown = event.currentTarget.closest('.dropdown');
+            dropdown.classList.toggle('open');
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => {
+                document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+                if (window.innerWidth <= 968) {
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            document.querySelectorAll('.dropdown.open').forEach(d => {
+                if (!d.contains(e.target)) d.classList.remove('open');
+            });
+        });
+
+        // ---------------------------------------------------------
+        // NAVBAR SCROLL EFFECT
+        // ---------------------------------------------------------
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ---------------------------------------------------------
+        // SCROLL REVEAL — sections only, one fade per block
         // ---------------------------------------------------------
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         // ---------------------------------------------------------
-        // GITHUB API INTEGRATION
+        // GITHUB API — latest release & download links
         // ---------------------------------------------------------
         const REPO_OWNER = "elymsyr";
         const REPO_NAME = "dungeon-master-tool";
@@ -591,11 +711,9 @@ cd bundle
                 const data = await response.json();
                 const version = data.tag_name;
 
-                // Update badge & version
-                if (badgeEl) badgeEl.innerHTML = `<span class="badge-dot"></span> ${version} Available`;
+                if (badgeEl) badgeEl.innerHTML = `<span class="badge-dot"></span> ${version} — free`;
                 if (verText) verText.innerHTML = version;
 
-                // Find assets
                 const assetMap = {
                     android: data.assets.find(a => a.name === 'DungeonMasterTool-Android.apk'),
                     ios: data.assets.find(a => a.name === 'DungeonMasterTool-iOS.ipa'),
@@ -626,7 +744,7 @@ cd bundle
                         btn.innerHTML = `<i data-lucide="download"></i> Download ${version} ${ext}`;
                     } else {
                         btn.href = data.html_url;
-                        btn.innerHTML = `<i data-lucide="external-link"></i> Go to Releases`;
+                        btn.innerHTML = `<i data-lucide="external-link"></i> Go to releases`;
                     }
                 }
 
@@ -634,12 +752,12 @@ cd bundle
 
             } catch (error) {
                 console.error("GitHub release fetch failed:", error);
-                if (verText) verText.innerHTML = "Latest Release";
+                if (verText) verText.innerHTML = "Latest release";
             }
         }
 
         // ---------------------------------------------------------
-        // UI INTERACTIONS
+        // DOWNLOAD TABS
         // ---------------------------------------------------------
         function switchTab(os) {
             document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('active'));
@@ -652,7 +770,7 @@ cd bundle
             const code = btn.previousElementSibling.innerText;
             navigator.clipboard.writeText(code);
             btn.innerHTML = '<i data-lucide="check"></i>';
-            btn.style.color = 'var(--accent)';
+            btn.style.color = 'var(--gold)';
             lucide.createIcons();
             setTimeout(() => {
                 btn.innerHTML = '<i data-lucide="copy"></i>';
@@ -661,60 +779,40 @@ cd bundle
             }, 2000);
         }
 
-        function toggleMenu() {
-            if (window.innerWidth <= 768) {
-                document.getElementById('navLinks').classList.toggle('active');
-            }
-        }
-
         // ---------------------------------------------------------
-        // NAVBAR SCROLL EFFECT
-        // ---------------------------------------------------------
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // ---------------------------------------------------------
-        // GALLERY
+        // GALLERY + LIGHTBOX
         // ---------------------------------------------------------
         async function loadGallery() {
-            const galleryGrid = document.querySelector('.gallery-grid');
-            if (!galleryGrid) return;
+            const grid = document.querySelector('.gallery-grid');
+            const placeholder = document.getElementById('gallery-placeholder');
+            if (!grid || !placeholder) return;
 
             const imageList = [
-                { file: "char.png", caption: "Characters" },
-                { file: "map.png", caption: "Map" },
-                { file: "settings.png", caption: "Campaign View" },
-                { file: "db.png", caption: "World Database" },
-                { file: "world.png", caption: "World" },
-                { file: "session.png", caption: "Session" },
+                { file: "char.png", caption: "Character sheet" },
+                { file: "map.png", caption: "World map" },
+                { file: "settings.png", caption: "Campaign view" },
+                { file: "db.png", caption: "World database" },
+                { file: "world.png", caption: "World hub" },
+                { file: "session.png", caption: "Session & combat" },
                 { file: "social.png", caption: "Social" },
                 { file: "pack.png", caption: "Packages" },
             ];
 
-            galleryGrid.innerHTML = '';
+            placeholder.remove();
+            grid.innerHTML = '';
 
             imageList.forEach(img => {
                 const item = document.createElement('div');
-                item.className = 'gallery-item reveal';
+                item.className = 'gallery-item';
                 item.innerHTML = `
                     <img src="media/${img.file}" alt="${img.caption}" loading="lazy">
                     <div class="caption">${img.caption}</div>
                 `;
                 item.addEventListener('click', () => openLightbox(`media/${img.file}`, img.caption));
-                galleryGrid.appendChild(item);
-                revealObserver.observe(item);
+                grid.appendChild(item);
             });
         }
 
-        // ---------------------------------------------------------
-        // LIGHTBOX
-        // ---------------------------------------------------------
         function openLightbox(src, alt) {
             const lb = document.getElementById('lightbox');
             const img = lb.querySelector('.lightbox-img');
@@ -738,39 +836,8 @@ cd bundle
         });
 
         // ---------------------------------------------------------
-        // ANCHOR SCROLL — wait for lazy-loaded gallery images so
-        // target offset is stable before scrolling.
+        // INIT
         // ---------------------------------------------------------
-        function scrollToAnchor(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const pending = [...document.querySelectorAll('.gallery-grid img')]
-                .filter(i => !i.complete);
-            const go = () => el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            if (pending.length === 0) {
-                requestAnimationFrame(go);
-                return;
-            }
-            Promise.all(pending.map(i => new Promise(res => {
-                i.addEventListener('load', res, { once: true });
-                i.addEventListener('error', res, { once: true });
-            }))).then(() => requestAnimationFrame(go));
-        }
-
-        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(a => {
-            a.addEventListener('click', e => {
-                const id = a.getAttribute('href').slice(1);
-                const el = document.getElementById(id);
-                if (!el) return;
-                e.preventDefault();
-                if (window.innerWidth <= 768) {
-                    document.getElementById('navLinks').classList.remove('active');
-                }
-                scrollToAnchor(id);
-            });
-        });
-
-        // Init on DOM load
         document.addEventListener("DOMContentLoaded", () => {
             fetchLatestRelease();
             loadGallery();
