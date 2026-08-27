@@ -6,6 +6,9 @@
   <meta name="robots" content="noindex" />
   <!-- token_hash query string'de: Referer ile üçüncü tarafa sızmasın. -->
   <meta name="referrer" content="no-referrer" />
+  <!-- Bu sayfa canlı bir access token ve düz metin parola görüyor;
+       elymsyr.github.io tüm user-pages projeleriyle paylaşılan bir origin. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self'; connect-src https://zapecuofyecpgazfyyhs.supabase.co; script-src 'unsafe-inline'; form-action 'none'; base-uri 'none'" />
   <title>Reset Password · Dungeon Master Tool</title>
   <link rel="icon" type="image/png" href="../media/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,7 +47,7 @@
       <div class="spinner"></div>
     </div>
 
-    <div id="prompt" class="hidden">
+    <div id="prompt" class="hidden" style="display:none">
       <h1>Set a New Password</h1>
       <p class="subtitle">Choose a new password, then return to the app and sign in.</p>
       <form id="form">
@@ -104,7 +107,10 @@
     const PANELS = ['loading', 'prompt', 'success', 'error'];
     const BADGES = { loading: 'badge-key', prompt: 'badge-key', success: 'badge-ok', error: 'badge-err' };
     const show = (id) => {
-      for (const p of PANELS) $(p).classList.toggle('hidden', p !== id);
+      for (const p of PANELS) {
+        $(p).classList.toggle('hidden', p !== id);
+        $(p).style.display = p === id ? '' : 'none';
+      }
       $('badge').className = 'badge ' + BADGES[id];
       $('badge').innerHTML = id === 'success'
         ? '<svg viewBox="0 0 24 24" fill="none" stroke="#16110b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg>'
@@ -153,11 +159,23 @@
         // Uzunluk/karmaşıklık kuralının otoritesi sunucudaki password policy;
         // buradaki tek kontrol iki alanın eşleşmesi.
         await api('PUT', '/user', { body: { password: pw }, jwt: accessToken });
-        // scope=global: parola değişince saldırganın elindeki oturumlar da
-        // düşsün — sıfırlamanın yarısı bu.
-        await api('POST', '/logout?scope=global', { jwt: accessToken });
+        // Buradan sonrası parolayı DEĞİŞTİRMİŞ durumdadır: logout'un hatası
+        // akışı geri saramaz, yoksa kullanıcı "olmadı" sanıp vazgeçer ve
+        // parolasının değiştiğinden habersiz kalır.
+        let warning = '';
+        try {
+          // scope=global: parola değişince saldırganın elindeki oturumlar da
+          // düşsün — sıfırlamanın yarısı bu.
+          await api('POST', '/logout?scope=global', { jwt: accessToken });
+        } catch (_) {
+          warning = ' Note: other devices could not be signed out — sign in from the app and sign out everywhere.';
+        }
         accessToken = null;
         show('success');
+        if (warning) {
+          const sub = document.querySelector('#success .subtitle');
+          if (sub) sub.textContent += warning;
+        }
       } catch (e2) {
         err.textContent = String(e2?.message || e2);
         err.classList.remove('hidden');
