@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <!-- token_hash query string'de: Referer ile üçüncü tarafa sızmasın. -->
+  <meta name="referrer" content="no-referrer" />
+  <title>Reset password · Dungeon Master Tool</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: #0f0e17; color: #fff;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 24px;
+    }
+    .card {
+      width: 100%; max-width: 440px; background: #1a1825; border: 1px solid #2a2740;
+      border-radius: 16px; padding: 40px 36px; text-align: center;
+    }
+    .crest { font-size: 38px; line-height: 1; }
+    h1 { margin: 14px 0 0; font-size: 20px; letter-spacing: .5px; color: #f5d49b; }
+    .status { margin: 22px 0 6px; font-size: 19px; font-weight: 600; }
+    p { margin: 8px 0 0; color: #b6b2c9; font-size: 15px; line-height: 1.6; }
+    .spinner {
+      width: 34px; height: 34px; margin: 8px auto 0; border-radius: 50%;
+      border: 3px solid #2a2740; border-top-color: #7b5cff; animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .ok { color: #6ee7a8; } .err { color: #ff8b8b; }
+    .hint { margin-top: 20px; color: #7d7a91; font-size: 13px; }
+    .hidden { display: none; }
+    form { margin-top: 22px; text-align: left; }
+    label { display: block; font-size: 12px; color: #b6b2c9; margin: 12px 0 4px; }
+    input {
+      width: 100%; padding: 10px 12px; border-radius: 8px; font-size: 15px;
+      background: #0f0e17; border: 1px solid #2a2740; color: #fff;
+    }
+    input:focus { outline: none; border-color: #7b5cff; }
+    button {
+      width: 100%; margin-top: 18px; padding: 11px 12px; border: 0; border-radius: 8px;
+      background: #7b5cff; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer;
+    }
+    button:disabled { opacity: .6; cursor: default; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="crest">&#9876;&#65039;</div>
+    <h1>Dungeon Master Tool</h1>
+
+    <div id="loading">
+      <div class="spinner"></div>
+      <div class="status">Verifying link…</div>
+    </div>
+
+    <div id="prompt" class="hidden">
+      <div class="status">Set a new password</div>
+      <form id="form">
+        <label for="pw">New password</label>
+        <input id="pw" type="password" autocomplete="new-password" required />
+        <label for="pw2">Repeat password</label>
+        <input id="pw2" type="password" autocomplete="new-password" required />
+        <button id="submit" type="submit">Update password</button>
+      </form>
+      <p id="formerr" class="err hidden"></p>
+    </div>
+
+    <div id="success" class="hidden">
+      <div class="status ok">Password updated</div>
+      <p>Open the Dungeon Master Tool app and sign in with your new password.</p>
+      <p class="hint">You can close this tab.</p>
+    </div>
+
+    <div id="error" class="hidden">
+      <div class="status err">Reset failed</div>
+      <p id="errmsg">This link is invalid or has expired.</p>
+      <p class="hint">Request a new reset email from the app's sign-in screen, then try again.</p>
+    </div>
+  </div>
+
+  <script>
+    // Public values — the anon key is safe to expose (Row Level Security protects data).
+    const SUPABASE_URL = 'https://zapecuofyecpgazfyyhs.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_CDVr4NuxTs9z0ae-rDk-XA_TM126uut';
+    const AUTH = SUPABASE_URL + '/auth/v1';
+
+    // SDK yok, CDN yok: bu sayfa recovery session'ını ve yeni parolayı
+    // görüyor; üçüncü taraf bir script host'una güvenmemesi için GoTrue'nun
+    // üç endpoint'i doğrudan çağrılıyor.
+    async function api(method, path, { body, jwt } = {}) {
+      const res = await fetch(AUTH + path, {
+        method,
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          'Content-Type': 'application/json',
+          ...(jwt ? { Authorization: 'Bearer ' + jwt } : {}),
+        },
+        body: body ? JSON.stringify(body) : undefined,
+      });
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : {};
+      if (!res.ok) throw new Error(data.msg || data.error_description || data.message || 'Request failed');
+      return data;
+    }
+
+    const $ = (id) => document.getElementById(id);
+    const show = (id) => {
+      for (const el of document.querySelectorAll('.card > div')) {
+        if (el.id) el.classList.add('hidden');
+      }
+      $(id).classList.remove('hidden');
+    };
+    const fail = (msg) => { $('errmsg').textContent = msg; show('error'); };
+
+    const params = new URLSearchParams(window.location.search);
+    const token_hash = params.get('token_hash');
+    // type URL'den geliyor; whitelist dışına çıkmasın.
+    const type = params.get('type') === 'recovery' ? 'recovery' : null;
+    // Token tarayıcı geçmişinde / adres çubuğunda kalmasın.
+    history.replaceState(null, '', window.location.pathname);
+
+    // Session yalnızca bu değişkende — localStorage'a hiç yazılmıyor.
+    // elymsyr.github.io tüm user-pages projeleriyle paylaşılan bir origin.
+    let accessToken = null;
+
+    (async () => {
+      if (!token_hash) { fail('Missing reset token.'); return; }
+      if (!type) { fail('Unsupported link type.'); return; }
+      try {
+        const session = await api('POST', '/verify', { body: { token_hash, type } });
+        accessToken = session.access_token;
+        if (!accessToken) { fail('This link is invalid or has expired.'); return; }
+        show('prompt');
+      } catch (e) {
+        fail(String(e?.message || e));
+      }
+    })();
+
+    $('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = $('formerr');
+      const pw = $('pw').value;
+      if (pw !== $('pw2').value) {
+        err.textContent = 'Passwords do not match.';
+        err.classList.remove('hidden');
+        return;
+      }
+      err.classList.add('hidden');
+      $('submit').disabled = true;
+      try {
+        // Uzunluk/karmaşıklık kuralının otoritesi sunucudaki password policy;
+        // buradaki tek kontrol iki alanın eşleşmesi.
+        await api('PUT', '/user', { body: { password: pw }, jwt: accessToken });
+        // scope=global: parola değişince saldırganın elindeki oturumlar da
+        // düşsün — sıfırlamanın yarısı bu.
+        await api('POST', '/logout?scope=global', { jwt: accessToken });
+        accessToken = null;
+        show('success');
+      } catch (e2) {
+        err.textContent = String(e2?.message || e2);
+        err.classList.remove('hidden');
+        $('submit').disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -57,16 +57,13 @@
     </div>
   </div>
 
-  <script type="module">
-    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
+  <script>
     // Public values — the anon key is safe to expose (Row Level Security protects data).
-    // Fill these with the same SUPABASE_URL / SUPABASE_ANON_KEY the app is built with.
     const SUPABASE_URL = 'https://zapecuofyecpgazfyyhs.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_CDVr4NuxTs9z0ae-rDk-XA_TM126uut';
 
     const show = (id) => {
-      for (const el of document.querySelectorAll('.card > div:not(.crest)')) {
+      for (const el of document.querySelectorAll('.card > div')) {
         if (el.id) el.classList.add('hidden');
       }
       document.getElementById(id).classList.remove('hidden');
@@ -75,31 +72,33 @@
     (async () => {
       const params = new URLSearchParams(window.location.search);
       const token_hash = params.get('token_hash');
-      const type = params.get('type') || 'email';
+      // type URL'den geliyor; whitelist dışına çıkmasın.
+      const type = params.get('type') === 'email' ? 'email' : null;
       // Token tarayıcı geçmişinde / adres çubuğunda kalmasın.
       history.replaceState(null, '', window.location.pathname);
 
-      if (!token_hash) {
+      if (!token_hash || !type) {
         document.getElementById('errmsg').textContent = 'Missing confirmation token.';
         show('error');
         return;
       }
 
       try {
-        // persistSession:false — elymsyr.github.io tüm user-pages projeleriyle
-        // paylaşılan bir origin; session localStorage'a yazılırsa aynı
-        // domaindeki herhangi bir XSS refresh token'ı çalabilir.
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-          auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+        // SDK yok, CDN yok: doğrulama tek bir GoTrue çağrısı, oturum hiçbir
+        // yere yazılmıyor — kullanıcı uygulamadan giriş yapacak.
+        const res = await fetch(SUPABASE_URL + '/auth/v1/verify', {
+          method: 'POST',
+          headers: { apikey: SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token_hash, type }),
         });
-        const { error } = await supabase.auth.verifyOtp({ type, token_hash });
-        if (error) {
-          document.getElementById('errmsg').textContent = error.message;
+        const text = await res.text();
+        const data = text ? JSON.parse(text) : {};
+        if (!res.ok) {
+          document.getElementById('errmsg').textContent =
+            data.msg || data.error_description || data.message || 'This link is invalid or has expired.';
           show('error');
           return;
         }
-        // Don't leave a lingering browser session; the user signs in from the app.
-        await supabase.auth.signOut();
         show('success');
       } catch (e) {
         document.getElementById('errmsg').textContent = String(e?.message || e);
