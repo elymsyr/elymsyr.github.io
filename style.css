@@ -681,6 +681,17 @@ a {
     transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
+.ledger-card.featured,
+.ledger-card.wide {
+    grid-column: span 2;
+}
+
+.ledger-card.featured {
+    border-color: var(--line-strong);
+    border-top: 3px solid var(--gold-soft);
+    background: linear-gradient(180deg, rgba(217, 169, 107, 0.08), var(--panel) 60%);
+}
+
 .ledger-card::after {
     content: '';
     position: absolute;
@@ -927,6 +938,10 @@ a {
     position: relative;
     overflow: hidden;
     cursor: zoom-in;
+}
+
+.gallery-item.wide {
+    grid-column: 1 / -1;
 }
 
 .gallery-item img {
@@ -1599,6 +1614,11 @@ body.lightbox-open {
 
     .ledger-grid {
         grid-template-columns: 1fr;
+    }
+
+    .ledger-card.featured,
+    .ledger-card.wide {
+        grid-column: auto;
     }
 
     .pillars-grid {

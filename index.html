@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" href="media/icon.png">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=3.3">
+    <link rel="stylesheet" href="style.css?v=3.5">
 
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -45,7 +45,7 @@
                     <div class="dropdown-menu">
                         <a href="#features">Features</a>
                         <a href="#screens">Second Screen</a>
-                        <a href="#sync">Local sync</a>
+                        <a href="#sync">.dmtz files</a>
                         <a href="#showcase">Screenshots</a>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <img src="media/map.png" alt="Dungeon Master Tool interface with a world map">
+                    <img src="media/session.webp" alt="Dungeon Master Tool session: battle map, combat tracker and 3D dice">
                 </div>
                 <div class="field-note">
                     <p class="field-note-title">Session 14 · The Drowned Keep</p>
@@ -166,23 +166,32 @@
             <div class="feature-group reveal">
                 <div class="group-title"><span class="group-label">Worldbuilding</span></div>
                 <div class="ledger-grid">
+                    <article class="ledger-card featured">
+                        <div class="ledger-icon"><i data-lucide="hourglass"></i></div>
+                        <h3>World Map & Era Timeline</h3>
+                        <p>Split your world's history into eras on a timeline bar and move between them. Each era keeps
+                            its own map, pins, nested location maps and day-by-day timeline pins linked to cards and
+                            sessions: the same city before the war and after it. Grid, scale, drawing and fog of war
+                            included.</p>
+                    </article>
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="library"></i></div>
+                        <h3>Codex</h3>
+                        <p>Cards for NPCs, monsters, spells, items and locations, where every reference is a link. Pin
+                            cards, preview with a long press, search by name, tag or text.</p>
+                    </article>
+                    <article class="ledger-card featured">
+                        <div class="ledger-icon"><i data-lucide="package"></i></div>
+                        <h3>Templates & Packages</h3>
+                        <p>Every world is built on a template (D&D 5e is built in) and pulls content from packages:
+                            bundles of cards you install into any world, link to other packages or share on the
+                            marketplace. <em>Custom templates are coming.</em></p>
+                    </article>
                     <article class="ledger-card">
                         <div class="ledger-icon"><i data-lucide="network"></i></div>
                         <h3>Mind Map</h3>
-                        <p>An infinite canvas for the ideas you haven't organised yet — factions, pantheons, plot
-                            hooks. Bezier links, nested workspaces, undo/redo.</p>
-                    </article>
-                    <article class="ledger-card">
-                        <div class="ledger-icon"><i data-lucide="map"></i></div>
-                        <h3>World Map & Eras</h3>
-                        <p>Drop pins on a map image and link them to entities, sessions and events. Every era gets its
-                            own map and timeline, and you can hide the parts of the world the party hasn't reached.</p>
-                    </article>
-                    <article class="ledger-card">
-                        <div class="ledger-icon"><i data-lucide="package"></i></div>
-                        <h3>Packages</h3>
-                        <p>Content as one-tap bundles: spell packs, monster lists, treasure sets, whole modules. Import
-                            them into any world, export your own, share them on the marketplace.</p>
+                        <p>An infinite canvas for the ideas you haven't organised yet: factions, pantheons, plot
+                            hooks. Linked nodes, workspaces, freehand drawing, undo/redo.</p>
                     </article>
                 </div>
             </div>
@@ -192,22 +201,21 @@
                 <div class="ledger-grid">
                     <article class="ledger-card">
                         <div class="ledger-icon"><i data-lucide="swords"></i></div>
-                        <h3>Combat & Battle Maps</h3>
-                        <p>Run initiative, HP, conditions and turn order on a six-layer canvas — grid, tokens, fog,
-                            terrain, decals — with persistent rulers and AoE templates. Every action lands in the
-                            session log.</p>
+                        <h3>Battle Map & Combat</h3>
+                        <p>The session screen is the map. Initiative, HP, conditions and turn order sit on top of
+                            layers, fog, AoE templates, 5e diagonals, sized tokens and a DM-only layer.</p>
                     </article>
                     <article class="ledger-card">
-                        <div class="ledger-icon"><i data-lucide="book-open"></i></div>
-                        <h3>Sessions & Campaigns</h3>
-                        <p>Each world keeps its sessions: notes, timeline events and encounters that survive between
-                            games. Pick up exactly where you stopped.</p>
+                        <div class="ledger-icon"><i data-lucide="dices"></i></div>
+                        <h3>3D Dice</h3>
+                        <p>Dice roll across the screen in named styles. Skills and saving throws roll straight from the
+                            character sheet, and every roll lands in the session log.</p>
                     </article>
                     <article class="ledger-card">
                         <div class="ledger-icon"><i data-lucide="music"></i></div>
-                        <h3>Soundpad</h3>
-                        <p>Layered ambient audio with gapless loops and fades. Build a theme for the tavern and one for
-                            the dungeon, then crossfade mid-scene.</p>
+                        <h3>Soundpad & PDFs</h3>
+                        <p>Layered ambience with gapless loops, fades and ready-made soundpacks. PDFs live inside the
+                            world, open in tabs and can be shared with players.</p>
                     </article>
                 </div>
             </div>
@@ -215,23 +223,55 @@
             <div class="feature-group reveal">
                 <div class="group-title"><span class="group-label">Players</span></div>
                 <div class="ledger-grid">
+                    <article class="ledger-card featured">
+                        <div class="ledger-icon"><i data-lucide="scroll-text"></i></div>
+                        <h3>Full 5e Rules</h3>
+                        <p>Species, class, subclass, background and feats fold into one sheet: senses, resistances,
+                            proficiencies, traits and always-prepared spells, each showing where it came from.
+                            Multiclass prerequisites and spell slots, class resources like Rage and sorcery points,
+                            weapon mastery, short and long rests.</p>
+                    </article>
                     <article class="ledger-card">
                         <div class="ledger-icon"><i data-lucide="user-plus"></i></div>
-                        <h3>Character Creation</h3>
-                        <p>A wizard that walks you through species, class, background, ability scores and gear. SRD
-                            content built in, Open5e packs to extend it.</p>
+                        <h3>Character Builder</h3>
+                        <p>Species, class, subclass, background, ability scores, skills, starting gear and feats from
+                            the SRD and any installed pack.</p>
                     </article>
                     <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="trending-up"></i></div>
+                        <h3>Level-Up</h3>
+                        <p>Automatic HP, proficiency and hit dice; ASIs, feats, subclass and spell picks wait as
+                            pending choices.</p>
+                    </article>
+                    <article class="ledger-card wide">
                         <div class="ledger-icon"><i data-lucide="wifi"></i></div>
                         <h3>Online Play</h3>
-                        <p>Join the DM's world, claim a character and play. All features are available from the start
-                            — no approvals, no waiting lists.</p>
+                        <p>Join with an invite code, claim a character, move your own token on your turn and send rolls
+                            to the DM's log. Shared cards update when the DM edits them.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="feature-group reveal">
+                <div class="group-title"><span class="group-label">Content</span></div>
+                <div class="ledger-grid">
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="book-open"></i></div>
+                        <h3>SRD 5.2.1</h3>
+                        <p>Built in and offline, with card art for 1,247 SRD cards. The SRD text can also be shown in
+                            Turkish.</p>
                     </article>
                     <article class="ledger-card">
-                        <div class="ledger-icon"><i data-lucide="sticky-note"></i></div>
-                        <h3>Personal Notes</h3>
-                        <p>A private notes field on every character and entity — backstory, plans, reminders. It stays
-                            with your world and syncs to your devices.</p>
+                        <div class="ledger-icon"><i data-lucide="package"></i></div>
+                        <h3>19 One-Tap Packs</h3>
+                        <p>Tome of Beasts 1–3, Creature Codex, Black Flag SRD, Deep Magic, Tal'Dorei and more, one tap
+                            away and no account needed.</p>
+                    </article>
+                    <article class="ledger-card">
+                        <div class="ledger-icon"><i data-lucide="castle"></i></div>
+                        <h3>Ready-Made Worlds</h3>
+                        <p><em>99 Devils of Uzrah's Palace</em>, <em>Army of the Damned</em>, <em>The Cold Bounty</em>
+                            and our own Turkish campaign <em>Aegis Act 1</em>.</p>
                     </article>
                 </div>
             </div>
@@ -245,7 +285,8 @@
                 <p class="section-kicker"><span class="kicker-num">★</span> Second Screen</p>
                 <h2>One world, every screen at the table</h2>
                 <p class="section-lead">Push battle maps, images, entity cards and PDFs to a pop-out window, an external
-                    display, or every connected player's app. You decide exactly what the table sees — and when.</p>
+                    display, or every connected player's app. You decide exactly what the table sees — and when. Fog of
+                    war and hidden tokens stay hidden.</p>
             </div>
 
             <div class="ways-grid reveal">
@@ -269,40 +310,40 @@
         </div>
     </section>
 
-    <!-- Local Sync highlight -->
+    <!-- Moving content between devices -->
     <section id="sync" class="sync-band">
         <div class="container">
             <div class="sync-panel reveal">
                 <div class="sync-copy">
-                    <p class="section-kicker"><span class="kicker-num">★</span> Local sync — the one people ask about</p>
+                    <p class="section-kicker"><span class="kicker-num">★</span> Your devices, your choice</p>
                     <h2>Your world moves with you.<br>Your table stays yours.</h2>
                     <p class="section-lead">
-                        Move worlds, packages and characters between your own devices over Wi-Fi — no internet, no
-                        account, nothing uploaded. Pair with a QR code or IP + PIN, and the transfer happens directly
-                        between your machines.
+                        Export a world, package or character to a single <code>.dmtz</code> file and import it on any
+                        device, with no account and no network. Or put it online and it stays the same everywhere you
+                        sign in.
                     </p>
                 </div>
                 <div class="sync-notes">
                     <div class="sync-note">
-                        <span class="sync-note-icon"><i data-lucide="radio"></i></span>
+                        <span class="sync-note-icon"><i data-lucide="file-archive"></i></span>
                         <div>
-                            <h4>Pair once, sync often</h4>
-                            <p>Wi-Fi pairing by QR or IP + PIN between any of your devices.</p>
+                            <h4>One file, the whole campaign</h4>
+                            <p>A world with its maps, cards and media goes into one <code>.dmtz</code> file and merges
+                                on import.</p>
                         </div>
                     </div>
                     <div class="sync-note">
                         <span class="sync-note-icon"><i data-lucide="shield-off"></i></span>
                         <div>
-                            <h4>Stays on your network</h4>
-                            <p>Nothing is uploaded — the data travels between your own devices.</p>
+                            <h4>No account, no network</h4>
+                            <p>Move it by USB, cloud drive or chat. Nothing passes through our servers.</p>
                         </div>
                     </div>
                     <div class="sync-note">
-                        <span class="sync-note-icon"><i data-lucide="folder-sync"></i></span>
+                        <span class="sync-note-icon"><i data-lucide="cloud"></i></span>
                         <div>
-                            <h4>The whole campaign moves</h4>
-                            <p>Worlds, packages and characters — everything you build travels between your devices over
-                                Wi-Fi.</p>
+                            <h4>Or put it online</h4>
+                            <p>An online world, package or character stays in step on every device you sign in on.</p>
                         </div>
                     </div>
                 </div>
@@ -352,14 +393,14 @@
                     <span class="pillar-icon"><i data-lucide="languages"></i></span>
                     <div>
                         <h4>4 languages</h4>
-                        <p>Interface, help and content in EN, TR, DE and FR.</p>
+                        <p>Interface and help in EN, TR, DE and FR; SRD text also in Turkish.</p>
                     </div>
                 </div>
                 <div class="pillar-item">
                     <span class="pillar-icon"><i data-lucide="gift"></i></span>
                     <div>
                         <h4>Free, always</h4>
-                        <p>No premium tier, no subscriptions. The SRD 5.2.1 and CC-licensed packs ship with the app.</p>
+                        <p>No premium tier, no subscriptions. The SRD 5.2.1 is built in; CC-licensed packs are one tap away.</p>
                     </div>
                 </div>
             </div>
@@ -788,14 +829,13 @@ cd bundle
             if (!grid || !placeholder) return;
 
             const imageList = [
-                { file: "char.png", caption: "Character sheet" },
-                { file: "map.png", caption: "World map" },
-                { file: "settings.png", caption: "Campaign view" },
-                { file: "db.png", caption: "World database" },
-                { file: "world.png", caption: "World hub" },
-                { file: "session.png", caption: "Session & combat" },
-                { file: "social.png", caption: "Social" },
-                { file: "pack.png", caption: "Packages" },
+                { file: "worlds.webp", caption: "Worlds", wide: true },
+                { file: "session.webp", caption: "Session & combat" },
+                { file: "map.webp", caption: "World map" },
+                { file: "character.webp", caption: "Character sheet" },
+                { file: "characters.webp", caption: "Characters" },
+                { file: "packages.webp", caption: "Packages" },
+                { file: "marketplace.webp", caption: "Marketplace" },
             ];
 
             placeholder.remove();
@@ -803,7 +843,7 @@ cd bundle
 
             imageList.forEach(img => {
                 const item = document.createElement('div');
-                item.className = 'gallery-item';
+                item.className = img.wide ? 'gallery-item wide' : 'gallery-item';
                 item.innerHTML = `
                     <img src="media/${img.file}" alt="${img.caption}" loading="lazy">
                     <div class="caption">${img.caption}</div>

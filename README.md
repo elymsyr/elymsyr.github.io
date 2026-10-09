@@ -11,7 +11,7 @@ This repository only hosts the site. The app itself (Flutter source, builds, rel
 | `index.html` | Landing page (single-page, HTML + CSS, no build step) |
 | `style.css` | Styles |
 | `media/` | Screenshots, logo and assets |
-| `confirm/` | Email confirmation page |
+| `confirm/`, `reset/` | Email confirmation and password reset pages |
 
 ## Run locally
 
